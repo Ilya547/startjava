@@ -1,63 +1,64 @@
 public class VariablesTheme {
     public static void main(String[] args) {
         //1.Создание переменных и вывод их значений на консоль
-        String title1 = "1.Создание переменных и вывод их значений на консоль;";
         byte numCores = 2; 
         short ramMb = 4096;
         int hddGb = 931;
         long freqCpuGhz = 2;
         float cpuFsbMhz = 99.8f;
         double cpuPackagePowerW = 3.60d;
-        boolean thisPc = true;
-        char NamePc = '1';
-        System.out.println(title1);
-        System.out.println("numCores = " + numCores + "; ramMb = " + ramMb + "; hddGb = " + hddGb + "; freqCpuGhz = " + freqCpuGhz + "; cpuFsbMhz = " + cpuFsbMhz + "; cpuPackagePowerW = " + cpuPackagePowerW + "; thisPc = " + thisPc + "; NamePc = " + NamePc);
+        boolean thispacec = true;
+        char namePc = '1';
+        System.out.println("1.Создание переменных и вывод их значений на консоль");
+        System.out.println("numCores = " + numCores + "; ramMb = " + ramMb + "; hddGb = " + hddGb + "; freqCpuGhz = " + freqCpuGhz + "; cpuFsbMhz = " + cpuFsbMhz + "; cpuPackagePowerW = " + cpuPackagePowerW + "; thispacec = " + thispacec + ";+ namePc = " + namePc);
 
         //2.Расчет стоимости товара со скидкой
-        String title2 = "2.Расчет стоимости товара со скидкой";
-        byte x = 100;
-        short y = 200;
+        byte productX = 100;
+        short productY = 200;
         float discount = 0.11f;
-        String text1 = "Итоговая сумма товаров со скидкой :";
-        String text2 = "Размер скидки :";
-        System.out.println(title2);
-        System.out.println(text1);
-        System.out.println(x + y - (x + y) * discount);
-        System.out.println(text2);
-        System.out.println((x + y) * discount);
+        short sumXY = 300;
+        System.out.println("2.Расчет стоимости товара со скидкой");
+        System.out.println("Итоговая сумма товаров со скидкой :");
+        System.out.println(sumXY - sumXY * discount);
+        System.out.println("Размер скидки :");
+        System.out.println(sumXY * discount);
 
         //3.Вывод на консоль слова JAVA
-        String title3 = "3.Вывод на консоль слова JAVA";
-        String line1 = "   J    a  v     v  a ";
-        String line2 = "   J   a a  v   v  a a  ";
-        String line3 = "J  J  aaaaa  V V  aaaaa ";
-        String line4 = "JJ  a     a  V  a     a";
-        System.out.println(title3);
-        System.out.println(line1);
-        System.out.println(line2);
-        System.out.println(line3);
-        System.out.println(line4);
+        System.out.println("3.Вывод на консоль слова JAVA");
+        System.out.println("   J    a  v     v  a ");
+        System.out.println("   J   a a  v   v  a a  ");
+        System.out.println("J  J  aaaaa  V V  aaaaa ");
+        System.out.println(" JJ  a     a  V  a     a");
 
         //4.Отображение min и max значений числовых типов данных
-        String title4 = "4.Отображение min и max значений числовых типов данных";
-        String subtitle1 = "Инкрементируемые значения:";
-        String subtitle2 = "Декрементируемые значения:";
         byte bMax = Byte.MAX_VALUE;
+        byte bMin = Byte.MIN_VALUE;
         short sMax = Short.MAX_VALUE;
-        int iMax = Integer.MAX_VALUE;
+        short sMin = Short.MIN_VALUE;
+        int intMax = Integer.MAX_VALUE;
+        int intMin = Integer.MIN_VALUE;
         long lMax = Long.MAX_VALUE;
+        Long lMin = Long.MIN_VALUE;
         float fMax = Float.MAX_VALUE;
+        float fMin = Float.MIN_VALUE;
         double dMax = Double.MAX_VALUE;
-        System.out.println(title4);
-        System.out.println("bMax = " + bMax + "; sMax = " + sMax + "; iMax = " + iMax + "; lMax = " + lMax + "; fMax = " + fMax + "; dMax = " + dMax);
-        System.out.println(subtitle1);
-        System.out.println("bMax = " + (bMax + 1) + "; sMax = " + (sMax + 1) + "; iMax = " + (iMax + 1) + "; lMax = " + (lMax + 1) + "; fMax = " + (fMax + 1) + "; dMax = " + (dMax + 1));
-        System.out.println(subtitle2);
-        System.out.println("bMax = " + (bMax - 1) + "; sMax = " + (sMax - 1) + "; iMax = " + (iMax - 1) + "; lMax = " + (lMax - 1) + "; fMax = " + (fMax - 1) + "; dMax = " + (dMax - 1));
+        double dMin = Double.MIN_VALUE;
+        System.out.println("4.Отображение min и max значений числовых типов данных");
+        System.out.println("Отображение max значений числовых типов данных:");
+        System.out.println("bMax = " + bMax + "; sMax = " + sMax + "; iMax = " + intMax + "; lMax = " + lMax + "; fMax = " + fMax + "; dMax = " + dMax);
+        System.out.println("Отображение min значений числовых типов данных:");
+        System.out.println("bMin = " + bMin + "; sMin = " + sMin + "; iMin = " + intMin + "; lMin = " + lMin + "; fMin = " + fMin + "; dMin = " + dMin);
+        System.out.println("Инкрементируемые значения for max:");
+        System.out.println("bMax = " + (bMax + 1) + "; sMax = " + (sMax + 1) + "; iMax = " + (intMax + 1) + "; lMax = " + (lMax + 1) + "; fMax = " + (fMax + 1) + "; dMax = " + (dMax + 1));
+        System.out.println("Декрементируемые значения for max:");
+        System.out.println("bMax = " + (bMax - 1) + "; sMax = " + (sMax - 1) + "; iMax = " + (intMax - 1) + "; lMax = " + (lMax - 1) + "; fMax = " + (fMax - 1) + "; dMax = " + (dMax - 1));
+        System.out.println("Инкрементируемые значения for min:");
+        System.out.println("bMin = " + (bMin + 1) + "; sMin = " + (sMin + 1) + "; iMin = " + (intMin + 1) + "; lMin = " + (lMin + 1) + "; fMin = " + (fMin + 1) + "; dMin = " + (dMin + 1));
+        System.out.println("Декрементируемые значения for min:");
+        System.out.println("bMin = " + (bMin - 1) + "; sMin = " + (sMin - 1) + "; iMin = " + (intMin - 1) + "; lMin = " + (lMin - 1) + "; fMin = " + (fMin - 1) + "; dMin = " + (dMin - 1));
 
         //5.Перестановка значений переменных
-        String title5 = "5.Перестановка значений переменных";
-        System.out.println(title5);
+        System.out.println("5.Перестановка значений переменных");
         float temperature = 36.6f;
         double pi = 3.1416d;
         System.out.println("temperature = " + temperature + "; pi = " + pi + ";");
@@ -68,71 +69,62 @@ public class VariablesTheme {
         System.out.println(";");
 
         //6.Вывод символов и их кодов
-        String title6 = "6.Вывод символов и их кодов";
-        byte a = 35;
-        byte b = 38;
-        byte c = 64;
-        byte d = 94;
-        byte e = 95;
-        char chA = (char) a; 
-        char chB = (char) b;
-        char chC = (char) c;
-        char chD = (char) d;
-        char chE = (char) e;
-        System.out.println(title6);
-        System.out.println(a + " = " + chA + " ; " + b + " = " + chB + " ; " + c + " = " + chC + " ; " + d + " = " + chD + " ; " + e + " = " + chE + " ; " );
+        byte hash = 35;
+        byte ampersand = 38;
+        byte at = 64;
+        byte caret = 94;
+        byte underscoreerscore = 95;
+        char chHash = (char) hash; 
+        char chAmpersand = (char) ampersand;
+        char chAt = (char) at;
+        char chCaret = (char) caret;
+        char chunderscoreerscore = (char) underscoreerscore;
+        System.out.println("6.Вывод символов и их кодов");
+        System.out.println(hash + " = " + chHash + " ; " + ampersand + " = " + chAmpersand + " ; " + at + " = " + chAt + " ; " + caret + " = " + chCaret + " ; " + underscoreerscore + " = " + chunderscoreerscore + " ; " );
 
         //7.Произведение и сумма цифр числа
-        String title7 = "7.Произведение и сумма цифр числа";
         int num = 345;
-        int n5 = num % 10;
-        int nu = num / 10;
-        int n4 = nu % 10;
-        int n3 = nu / 10;
-        System.out.println(title7);
-        System.out.println("Произведение : " + n3 * n4 * n5);
-        System.out.println("Сумма : " + (n3 + n4 + n5));
+        int digit = num % 10;
+        int interim = num / 10;
+        int ty = interim % 10;
+        int hundreds = interim / 10;
+        System.out.println("7.Произведение и сумма цифр числа");
+        System.out.println("Произведение : " + hundreds * ty * digit);
+        System.out.println("Сумма : " + (hundreds + ty + digit));
 
 
         //8.Вывод на консоль ASCII-арт Дюка
-        String title8 ="8.Вывод на консоль ASCII-арт Дюка";
-        char sp =  32;
-        char fSl = 47;
-        char bSl = 92;
-        char lPa = 40;
-        char rPa = 41;
-        char und = 95;
-        System.out.println(title8);
-        System.out.println(sp + "" + sp + "" + sp + "" + sp + "" + fSl + "" + bSl + "" + sp + "" + sp + "" + sp + "" + sp + "" + sp + "" + sp);
-        System.out.println(sp + "" + sp + "" + sp + "" + fSl + "" + sp + "" + sp + "" +bSl + "" + sp + "" + sp + "" + sp + "" + sp + "" + sp);
-        System.out.println(sp + "" + sp + "" + fSl + "" + und + "" + lPa + "" + sp + "" + rPa + "" + bSl + "" + sp + "" + sp + "" + sp + "" + sp);
-        System.out.println(sp + "" + fSl + "" + sp + "" + sp + "" + sp + "" + sp + "" + sp + "" + sp + "" + bSl + "" + sp + "" + sp + "" + sp);
-        System.out.println(fSl + "" + und + "" + und + "" + und + "" + und + "" + fSl + "" + bSl + "" + und + "" + und + "" + bSl + "" + sp + "" + sp);
+        char space = ' ';
+        char forwardSlash = '/';
+        char backslash = 92;
+        char leftParentheses = '(';
+        char rightParentheses = ')';
+        char underscore = '_';
+        System.out.println("8.Вывод на консоль ASCII-арт Дюка");
+        System.out.println(space + "" + space + "" + space + "" + space + "" + forwardSlash + "" + backslash + "" + space + "" + space + "" + space + "" + space + "" + space + "" + space);
+        System.out.println(space + "" + space + "" + space + "" + forwardSlash + "" + space + "" + space + "" +backslash + "" + space + "" + space + "" + space + "" + space + "" + space);
+        System.out.println(space + "" + space + "" + forwardSlash + "" + underscore + "" + leftParentheses + "" + space + "" + rightParentheses + "" + backslash + "" + space + "" + space + "" + space + "" + space);
+        System.out.println(space + "" + forwardSlash + "" + space + "" + space + "" + space + "" + space + "" + space + "" + space + "" + backslash + "" + space + "" + space + "" + space);
+        System.out.println(forwardSlash + "" + underscore + "" + underscore + "" + underscore + "" + underscore + "" + forwardSlash + "" + backslash + "" + underscore + "" + underscore + "" + backslash + "" + space + "" + space);
 
         //9.Отображение сотен, десятков, единиц числа
-        String title9 = "9.Отображение сотен, десятков, единиц числа";
         int numb = 123;
-        int nnn = numb % 10;
-        int n33 = numb % 10;
-        int n = numb / 10;
-        int n2 = n % 10;
-        int n1 = n / 10;
-        System.out.println(title9);
-        System.out.println(" сотни = " + n1 + " ; десятки = " + n2 + "; единицы числа = " + n33);
+        int interim1 = numb % 10;
+        int digit3 = numb % 10;
+        int interim2 = numb / 10;
+        int ty2 = interim2 % 10;
+        int hundreds1 = interim2 / 10;
+        System.out.println("9.Отображение сотен, десятков, единиц числа");
+        System.out.println(" сотни = " + hundreds1 + " ; десятки = " + ty2 + "; единицы числа = " + digit3);
 
         //10.Преобразование секунд
-        String title10 = "10.Преобразование секунд";
-        int number = 86399;
-        int q = 3600;
-        int qq = 60;
-        int hours = number / q;
-        System.out.println(title10);
-        //System.out.println(hours); //23
-        int min = (number - q * hours) / qq;
-        //System.out.println(min); //59
-        //82800 + 3540
-        int sec = (number - q * hours - qq * min);
-        //System.out.println(sec); //59
+        int numberSec = 86399;
+        int secPerHour = 3600;
+        int secPerMinute = 60;
+        int hours = numberSec / secPerHour;
+        System.out.println("10.Преобразование секунд");
+        int min = (numberSec - secPerHour * hours) / secPerMinute;
+        int sec = (numberSec - secPerHour * hours - secPerMinute * min);
         System.out.println(hours + ":" + min + ":" + sec);
                 }
 }
