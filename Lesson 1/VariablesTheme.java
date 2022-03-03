@@ -92,7 +92,6 @@ public class VariablesTheme {
         System.out.println("Произведение : " + hundreds * ty * digit);
         System.out.println("Сумма : " + (hundreds + ty + digit));
 
-
         //8.Вывод на консоль ASCII-арт Дюка
         char space = ' ';
         char forwardSlash = '/';
