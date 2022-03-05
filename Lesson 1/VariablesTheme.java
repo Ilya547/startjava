@@ -14,7 +14,7 @@ public class VariablesTheme {
 
         //2.Расчет стоимости товара со скидкой
         byte priceX = 100;
-        short piceY = 200;
+        short priceY = 200;
         float discount = 0.11f;
         short totalSum = 300;
         System.out.println("2.Расчет стоимости товара со скидкой");
@@ -38,19 +38,19 @@ public class VariablesTheme {
         System.out.println("4.Отображение min и max значений числовых типов данных");
         System.out.println("Отображение max значений числовых типов данных:");
         System.out.println("bMax = " + bMax + "; sMax = " + sMax + "; iMax = " + intMax + "; lMax = " + lMax + "; fMax = " + fMax + "; dMax = " + dMax);
-        bMax = ++bMax;
-        sMax = ++sMax;
-        intMax = ++intMax;
-        lMax = lMax;
-        fMax = ++fMax;
-        dMax = ++dMax;
+        ++bMax;
+        ++sMax;
+        ++intMax;
+        ++ lMax;
+        ++fMax;
+        ++dMax;
         System.out.println("Инкрементируемые значения:\n"+"bMax = " + bMax + "; sMax = " + sMax + "; iMax = " + intMax + "; lMax = " + lMax + "; fMax = " + fMax + "; dMax = " + dMax);
-        bMax = --bMax;
-        sMax = --sMax;
-        intMax = --intMax;
-        lMax = --lMax;
-        fMax = --fMax;
-        dMax = --dMax;
+        --bMax;
+        --sMax;
+        --intMax;
+        --lMax;
+        --fMax;
+        --dMax;
         System.out.println("Декрементируемые значения:\n"+ "bMax = " + bMax + "; sMax = " + sMax + "; iMax = " + intMax + "; lMax = " + lMax + "; fMax = " + fMax + "; dMax = " + dMax);
 
         //5.Перестановка значений переменных
@@ -60,7 +60,7 @@ public class VariablesTheme {
         System.out.println("number1 = " + number1 + "; number2 = " + number2 + ";");
         double tempNumber = number2;
         number2 = number1;
-        number1 = (float)tempNumber;
+        number1 = (float) tempNumber;
         System.out.printf("number1 = " + number1 + "; number2 = " + "%.1f",number2);
         System.out.println(";");
 
