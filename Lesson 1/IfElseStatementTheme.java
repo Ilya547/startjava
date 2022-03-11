@@ -171,8 +171,8 @@ public class IfElseStatementTheme {
         int banknote10 = 10;
         int banknote1 = 1;
         int quantityBanknote50 = sum / banknote50;
-        int quantityBanknote10 = quantityBanknote50 / banknote10;
-        int quantityBanknote1 = quantityBanknote10 / banknote1;
+        int quantityBanknote10 = (sum - quantityBanknote50 * banknote50) / banknote10;
+        int quantityBanknote1 = sum - quantityBanknote10 * banknote10 - quantityBanknote50 * banknote50;
         int remainderDivisionSumBanknote50 = sum % banknote50;
         int remainderDivisionSumBanknote10 = remainderDivisionSumBanknote50 % banknote10;
         int remainderDivisionSumBanknote1 = remainderDivisionSumBanknote10 % banknote1;
