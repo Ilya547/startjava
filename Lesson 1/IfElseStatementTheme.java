@@ -46,10 +46,15 @@ public class IfElseStatementTheme {
             System.out.println(num1 + " является нечетным числом");
         }
         if (num1 > 0) {
-            System.out.println(num1 + " является положительным числом" + "\n" + num1 + " не является числом 0");
+            System.out.println(num1 + " является положительным числом");
         } else {
-            System.out.println(num1 + " является отрицательным числом" + "\n" + num1 + " не является числом 0");
+            System.out.println(num1 + " является отрицательным числом");
         } 
+        if (num1 == 0) {
+            System.out.println(num1 + " является числом 0");
+        } else {
+            System.out.println(num1 + " не является числом 0");
+        }
 
         //4.Поиск общей цифры в числах
         System.out.println("4.Поиск общей цифры в числах");
@@ -77,29 +82,25 @@ public class IfElseStatementTheme {
         System.out.println("5.Определение буквы или символа по их коду");
         char symbol = '\u005A';
         System.out.println(symbol);
-        if (Character.isDigit(symbol) == true) {
-            System.out.println("Это код числа");
-        } else {
-            System.out.println("Это код буквы или другого символа");
-        }
+        System.out.println(symbol + " является буквой");
 
         //6.Определение суммы вклада и начисленных банком %
         System.out.println("6.Определение суммы вклада и начисленных банком %");
-        int sumDeposit= 300000;
+        int sumDeposit = 300000;
         int criteriaSumDeposit = 100000;
         int criteriaSumDeposit1 = 300000;
         byte percentDeposit5 = 5;
         byte percentDeposit7 = 7;
         byte percentDeposit10 = 10;
-        byte divider = 100;
         if (sumDeposit < criteriaSumDeposit) {
-            System.out.println("Сумма вклада : " + sumDeposit + "; начисленный процент : " + percentDeposit5 + " % ; " + "итоговая сумма с процентом : " + (sumDeposit + sumDeposit * percentDeposit5 / divider));
-        }
-        if (sumDeposit >= criteriaSumDeposit && sumDeposit <= criteriaSumDeposit1) {
-            System.out.println("Сумма вклада : " + sumDeposit + "; начисленный процент : " + percentDeposit7 + " % ; " + "итоговая сумма с процентом : " + (sumDeposit + sumDeposit * percentDeposit7 / divider));
-        }
-        if (sumDeposit > criteriaSumDeposit1) {
-            System.out.println("Сумма вклада : " + sumDeposit + "; начисленный процент : " + percentDeposit10 + " % ; " + "итоговая сумма с процентом : " + (sumDeposit + sumDeposit * percentDeposit10 / divider));
+            System.out.println("Сумма вклада : " + sumDeposit + "; начисленный процент : " + percentDeposit5 + " %; ");
+            System.out.println("итоговая сумма с процентом : " + (sumDeposit + sumDeposit * percentDeposit5 / 100));
+        } else if (sumDeposit >= criteriaSumDeposit && sumDeposit <= criteriaSumDeposit1) {
+            System.out.println("Сумма вклада : " + sumDeposit + "; начисленный процент : " + percentDeposit7 + " %; ");
+            System.out.println("итоговая сумма с процентом : " + (sumDeposit + sumDeposit * percentDeposit7 / 100));
+        } else {
+            System.out.println("Сумма вклада : " + sumDeposit + "; начисленный процент : " + percentDeposit10 + " %; ");
+            System.out.println("итоговая сумма с процентом : " + (sumDeposit + sumDeposit * percentDeposit10 / 100));
         }
 
         // 7. Определение оценки по предметам
@@ -109,27 +110,35 @@ public class IfElseStatementTheme {
         byte criteriaEstimation = 60;
         byte criteriaEstimation1 = 73;
         byte criteriaEstimation2 = 91;
+        byte estimationHistory = 0;
+        byte estimationProgramming = 0;
         System.out.println("7. Определение оценки по предметам");
         if (percentHistory <= criteriaEstimation) {
             System.out.println("оценка \"2\", предмет \"история\"; ");
-        } else if (percentHistory > criteriaEstimation && percentHistory <= criteriaEstimation1) {
+            estimationHistory = 2;
+        } else if ((percentHistory > criteriaEstimation) && (percentHistory <= criteriaEstimation1)) {
             System.out.println("оценка \"3\", предмет \"история\"; ");
-        } else if (percentHistory > criteriaSumDeposit1 && percentHistory <= criteriaEstimation2) {
+            estimationHistory = 3;
+        } else if ((percentHistory > criteriaSumDeposit1) && (percentHistory <= criteriaEstimation2)) {
             System.out.println("оценка \"4\", предмет \"история\"; ");
+            estimationHistory = 4;
         } else {
             System.out.println("оценка \"5\", предмет \"история\"; ");
+            estimationHistory = 4;
         }
         if (percentProgramming <= criteriaEstimation) {
             System.out.println("оценка \"2\", предмет \"программирование\"; ");
-        } else if (percentProgramming > criteriaEstimation && percentProgramming <= criteriaEstimation1) {
+            estimationProgramming = 2;
+        } else if ((percentProgramming > criteriaEstimation) && (percentProgramming <= criteriaEstimation1)) {
             System.out.println("оценка \"3\", предмет \"программирование\"; ");
-        } else if (percentProgramming > criteriaSumDeposit1 && percentProgramming <= criteriaEstimation2) {
+            estimationProgramming = 3;
+        } else if ((percentProgramming > criteriaSumDeposit1) && (percentProgramming <= criteriaEstimation2)) {
             System.out.println("оценка \"4\", предмет \"программирование\"; ");
+            estimationProgramming = 4;
         } else {
             System.out.println("оценка \"5\", предмет \"программирование\"; ");
+            estimationProgramming = 5;
         }
-        byte estimationHistory = 2;
-        byte estimationProgramming =5;
         System.out.println("Средний балл оценок по предметам :" + ((estimationProgramming + estimationHistory) / quantityDisciplines));
         System.out.println("Cредний % по предметам : " + ((percentHistory + percentProgramming) / quantityDisciplines)); 
 
@@ -140,30 +149,40 @@ public class IfElseStatementTheme {
         int revenuePerMonth = 15000;
         int profitPerYear = (revenuePerMonth - rentaPerMonth - costPricePerMonth) * 12;
         if (profitPerYear <= 0) {
-            System.out.println("Убыток продавца сотсавил : - " + profitPerYear);
+            System.out.println("Убыток продавца сотсавил : " + profitPerYear);
         } else {
             System.out.println("Пpибыль продавца сотсавила : + " + profitPerYear);
         }
 
         //9.Определение существования треугольника
         System.out.println("9.Определение существования треугольника");
-        int sideTriangleA = 9;
-        int sideTriangleB = 5;
-        int sideTriangleC = sideTriangleB;
-        if (sideTriangleA > sideTriangleB) {
-            System.out.println("Сторона треугольника, размером " + sideTriangleA + " является гипотенузой");
+        int sideTriangleA = 3;
+        int sideTriangleB = 4;
+        int sideTriangleC = 5;
+        if ((sideTriangleA + sideTriangleB > sideTriangleC) && (sideTriangleB + sideTriangleC > sideTriangleA) && (sideTriangleA + sideTriangleC > sideTriangleB)) {
+            System.out.println("Треугольник может существовать");
         } else {
-            System.out.println("Сторона треугольника, размером " + sideTriangleB + " является гипотенузой");
+            System.out.println("Треугольник не может существовать");
         }
-        int squareHypotenuse = sideTriangleA * sideTriangleA;
-        int squareKatet = sideTriangleB * sideTriangleB;
-        int sumSquareKatet = squareKatet + squareKatet;
-        if (squareHypotenuse == sumSquareKatet) {
-            System.out.println("Tреугольник с такими длинами сторон может существовать");
+        if (sideTriangleA * sideTriangleA + sideTriangleB * sideTriangleB == sideTriangleC * sideTriangleC) {
+            System.out.println("Сторона с размером " + sideTriangleC + " является гипотенузой, значит треугольник прямоугольный");
+        } else if (sideTriangleA * sideTriangleA == sideTriangleB * sideTriangleB + sideTriangleC * sideTriangleC) {
+            System.out.println("Сторона с размером " + sideTriangleA + " является гипотенузой, значит треугольник прямоугольный");
         } else {
-            System.out.println("Tреугольник с такими длинами сторон не может существовать");
+            System.out.println("Сторона с размером " + sideTriangleB + " является гипотенузой, значит треугольник прямоугольный");
         }
-
+        int triangleArea = sideTriangleA * sideTriangleB / 2;
+        System.out.println("Площадь теугольника = " + triangleArea);
+        String str1 = " |\\";
+        String str2 = "B| \\ C";
+        String str3 = " |  \\";
+        String str4 = " |___\\";
+        String str5 = "   A    ";
+        System.out.println(str1);
+        System.out.println(str2);
+        System.out.println(str3);
+        System.out.println(str4);
+        System.out.println(str5);
         //10.Подсчет количества банкнот
         System.out.println("10.Подсчет количества банкнот");
         int sum = 567;
