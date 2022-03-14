@@ -47,13 +47,10 @@ public class IfElseStatementTheme {
         }
         if (num1 > 0) {
             System.out.println(num1 + " является положительным числом");
+        } else if (num1 == 0) {
+            System.out.println(num1 + " является 0");
         } else {
             System.out.println(num1 + " является отрицательным числом");
-        } 
-        if (num1 == 0) {
-            System.out.println(num1 + " является числом 0");
-        } else {
-            System.out.println(num1 + " не является числом 0");
         }
 
         //4.Поиск общей цифры в числах
@@ -81,27 +78,32 @@ public class IfElseStatementTheme {
         //5.Определение буквы или символа по их коду
         System.out.println("5.Определение буквы или символа по их коду");
         char symbol = '\u005A';
-        System.out.println(symbol);
-        System.out.println(symbol + " является буквой");
+        int ascii = (int) symbol;
+        if ((40 > ascii) || (ascii < 91)) {
+            System.out.println(symbol + " является буквой");
+        } else if ((47 > ascii) || (ascii < 58)) {
+            System.out.println(symbol + " является числом");
+        } else {
+            System.out.println(symbol + " является специальным символом");
+        }
 
         //6.Определение суммы вклада и начисленных банком %
         System.out.println("6.Определение суммы вклада и начисленных банком %");
         int sumDeposit = 300000;
         int criteriaSumDeposit = 100000;
         int criteriaSumDeposit1 = 300000;
-        byte percentDeposit5 = 5;
-        byte percentDeposit7 = 7;
-        byte percentDeposit10 = 10;
+        byte percentDeposit = 0;
         if (sumDeposit < criteriaSumDeposit) {
-            System.out.println("Сумма вклада : " + sumDeposit + "; начисленный процент : " + percentDeposit5 + " %; ");
-            System.out.println("итоговая сумма с процентом : " + (sumDeposit + sumDeposit * percentDeposit5 / 100));
+            percentDeposit = 5;
         } else if (sumDeposit >= criteriaSumDeposit && sumDeposit <= criteriaSumDeposit1) {
-            System.out.println("Сумма вклада : " + sumDeposit + "; начисленный процент : " + percentDeposit7 + " %; ");
-            System.out.println("итоговая сумма с процентом : " + (sumDeposit + sumDeposit * percentDeposit7 / 100));
+            percentDeposit = 7;
         } else {
-            System.out.println("Сумма вклада : " + sumDeposit + "; начисленный процент : " + percentDeposit10 + " %; ");
-            System.out.println("итоговая сумма с процентом : " + (sumDeposit + sumDeposit * percentDeposit10 / 100));
+            percentDeposit = 10;
         }
+        int totalSumDeposit = sumDeposit + sumDeposit * percentDeposit / 100;
+        System.out.println("Сумма вклада : " + sumDeposit);
+        System.out.println("Начисленный процент : " + percentDeposit);
+        System.out.println("Итоговая сумма с процентом : " + totalSumDeposit);
 
         // 7. Определение оценки по предметам
         byte percentHistory = 59; 
@@ -159,10 +161,10 @@ public class IfElseStatementTheme {
         int sideTriangleA = 3;
         int sideTriangleB = 4;
         int sideTriangleC = 5;
-        if ((sideTriangleA + sideTriangleB > sideTriangleC) && (sideTriangleB + sideTriangleC > sideTriangleA) && (sideTriangleA + sideTriangleC > sideTriangleB)) {
-            System.out.println("Треугольник может существовать");
+        if ((sideTriangleA + sideTriangleB > sideTriangleC) || (sideTriangleB + sideTriangleC > sideTriangleA) || (sideTriangleA + sideTriangleC > sideTriangleB)) {
+            System.out.println("Треугольник существует");
         } else {
-            System.out.println("Треугольник не может существовать");
+            System.out.println("Треугольник не существует");
         }
         if (sideTriangleA * sideTriangleA + sideTriangleB * sideTriangleB == sideTriangleC * sideTriangleC) {
             System.out.println("Сторона с размером " + sideTriangleC + " является гипотенузой, значит треугольник прямоугольный");
@@ -173,16 +175,9 @@ public class IfElseStatementTheme {
         }
         int triangleArea = sideTriangleA * sideTriangleB / 2;
         System.out.println("Площадь теугольника = " + triangleArea);
-        String str1 = " |\\";
-        String str2 = "B| \\ C";
-        String str3 = " |  \\";
-        String str4 = " |___\\";
-        String str5 = "   A    ";
-        System.out.println(str1);
-        System.out.println(str2);
-        System.out.println(str3);
-        System.out.println(str4);
-        System.out.println(str5);
+        System.out.println(" |\\" + "\nB| \\ C" + "\n |  \\" + "\n |___\\" + "\n   A    ");
+
+
         //10.Подсчет количества банкнот
         System.out.println("10.Подсчет количества банкнот");
         int sum = 567;
