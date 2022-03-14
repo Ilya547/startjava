@@ -79,7 +79,7 @@ public class IfElseStatementTheme {
         System.out.println("5.Определение буквы или символа по их коду");
         char symbol = '\u005A';
         int ascii = (int) symbol;
-        if ((40 > ascii) || (ascii < 91)) {
+        if ((40 > ascii) || (ascii < 91) || (96 > ascii) || (ascii < 123) || (127 > ascii) || (ascii < 176) || (223 > ascii) || (ascii < 242)) {
             System.out.println(symbol + " является буквой");
         } else if ((47 > ascii) || (ascii < 58)) {
             System.out.println(symbol + " является числом");
@@ -116,30 +116,23 @@ public class IfElseStatementTheme {
         byte estimationProgramming = 0;
         System.out.println("7. Определение оценки по предметам");
         if (percentHistory <= criteriaEstimation) {
-            System.out.println("оценка \"2\", предмет \"история\"; ");
-            estimationHistory = 2;
+            System.out.println((estimationHistory = 2) + " - история");
         } else if ((percentHistory > criteriaEstimation) && (percentHistory <= criteriaEstimation1)) {
-            System.out.println("оценка \"3\", предмет \"история\"; ");
-            estimationHistory = 3;
+            System.out.println((estimationHistory = 3) + " - история");
         } else if ((percentHistory > criteriaSumDeposit1) && (percentHistory <= criteriaEstimation2)) {
-            System.out.println("оценка \"4\", предмет \"история\"; ");
-            estimationHistory = 4;
+            System.out.println((estimationHistory = 4) + " - история");
         } else {
-            System.out.println("оценка \"5\", предмет \"история\"; ");
-            estimationHistory = 4;
+            System.out.println((estimationHistory = 5) + " - история");
         }
         if (percentProgramming <= criteriaEstimation) {
-            System.out.println("оценка \"2\", предмет \"программирование\"; ");
+            System.out.println((estimationProgramming = 2) + " - программирование");
             estimationProgramming = 2;
         } else if ((percentProgramming > criteriaEstimation) && (percentProgramming <= criteriaEstimation1)) {
-            System.out.println("оценка \"3\", предмет \"программирование\"; ");
-            estimationProgramming = 3;
+            System.out.println((estimationProgramming = 3) + " - программирование");
         } else if ((percentProgramming > criteriaSumDeposit1) && (percentProgramming <= criteriaEstimation2)) {
-            System.out.println("оценка \"4\", предмет \"программирование\"; ");
-            estimationProgramming = 4;
+            System.out.println((estimationProgramming = 4) + " - программирование");
         } else {
-            System.out.println("оценка \"5\", предмет \"программирование\"; ");
-            estimationProgramming = 5;
+            System.out.println((estimationProgramming = 5) + " - программирование");
         }
         System.out.println("Средний балл оценок по предметам :" + ((estimationProgramming + estimationHistory) / quantityDisciplines));
         System.out.println("Cредний % по предметам : " + ((percentHistory + percentProgramming) / quantityDisciplines)); 
