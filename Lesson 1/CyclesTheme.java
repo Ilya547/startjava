@@ -19,25 +19,25 @@ public class CyclesTheme {
 
         //2.Вывод чисел между max и min
         System.out.println("2.Вывод чисел между max и min");
-        int xNum = 10;
-        int yNum = -1;
+        int maxNum = 10;
+        int minNum = -1;
         int zNum = 5;
-        if(xNum > zNum) {
-            xNum = 10;
-        } else if(zNum > xNum) {
-            xNum = 5;
+        if (maxNum > zNum) {
+            maxNum = maxNum;
+        } else if (zNum > maxNum) {
+            maxNum = zNum;
         } else {
-            xNum = - 1;
+            maxNum = minNum;
         }
-        if(xNum < zNum) {
-            yNum = 10;
-        } else {
-            yNum = 5;
+        if (maxNum < zNum) {
+            minNum = maxNum;
+        } else if (minNum < zNum) {
+            minNum = minNum;
         }
-        if(yNum >= yNum) {
-            yNum = - 1;
+        else {
+            zNum = minNum;
         }
-        for(i = yNum + 1; i < xNum; i++) {
+        for(i = maxNum - 1; i > minNum; i--) {
             System.out.printf("%2d;", i);
         }
         System.out.println();
@@ -47,27 +47,16 @@ public class CyclesTheme {
         //3.Вывод реверсивного числа и суммы его цифр
         System.out.println("3.Вывод реверсивного числа и суммы его цифр");
         int srcNum = 1234; 
-        int reversed = 0;
         int digit;
-        int tens;
-        int hundreds;
-        int thousands; 
+        int sumDigit = 0;
         while(srcNum > 0) {
             digit = srcNum % 10;
             srcNum = srcNum / 10;
-            reversed = reversed * 10 + digit;
-            tens = srcNum % 10;
-            srcNum = srcNum / 10;
-            reversed = reversed * 10 + tens;
-            hundreds = srcNum % 10;
-            srcNum = srcNum / 10;
-            reversed = reversed * 10 + hundreds;
-            thousands = srcNum % 10;
-            srcNum = srcNum / 10;
-            reversed = reversed * 10 + thousands;
-            System.out.println("Sum numbers: " + digit + tens + hundreds + thousands);
+            System.out.print(digit);
+            sumDigit = sumDigit + digit;
         }
-        System.out.println("Reversed number: " + reversed);
+        System.out.println();
+        System.out.println("Sum numbers = " + sumDigit);
         System.out.println();
         
         //4.Вывод чисел на консоль в несколько строк
@@ -81,15 +70,12 @@ public class CyclesTheme {
                     System.out.printf("%3d", i);
                 }
         }
-        System.out.printf("%s", "  0  0  0");
+        System.out.println();
         System.out.println();
 
         //5.Проверка количества единиц на четность
         System.out.println("5.Проверка количества единиц на четность");
         srcNum = 3141591;
-        int tenThousandth = 0;
-        int millions = 0;
-        int tensMillions = 0;
         int sumOne = 0;
         while(srcNum  > 0) {
             digit = srcNum % 10;
@@ -97,42 +83,6 @@ public class CyclesTheme {
             if (digit == 1) {
                 sumOne = sumOne + digit;
                 System.out.printf("%d; ", digit);
-            }
-            tens = srcNum % 10;
-            srcNum = srcNum / 10;
-            if (tens == 1) {
-                sumOne = sumOne + tens;
-                System.out.printf("%d; ", tens);
-            }
-            hundreds = srcNum % 10;
-            srcNum = srcNum / 10;
-            if (hundreds == 1) {
-                sumOne = sumOne + hundreds;
-                System.out.printf("%d; ", hundreds);
-            }
-            thousands = srcNum % 10;
-            srcNum = srcNum / 10;
-            if (thousands == 1) {
-                sumOne = sumOne + thousands;
-                System.out.printf("%d; ", thousands);
-            }
-            tenThousandth = srcNum % 10;
-            srcNum = srcNum / 10;
-            if (tenThousandth == 1) {
-                sumOne = sumOne + tenThousandth;
-                System.out.printf("%d; ", tenThousandth);
-            }
-            millions = srcNum % 10;
-            srcNum = srcNum / 10;
-            if (millions == 1) {
-                sumOne = sumOne + millions;
-                System.out.printf("%d; ", millions);
-            }
-            tensMillions = srcNum % 10;
-            srcNum = srcNum / 10;
-            if (tensMillions == 1) {
-                sumOne = sumOne + tensMillions;
-                System.out.printf("%d; ", tensMillions);
             }
         }
         System.out.println();
@@ -142,7 +92,7 @@ public class CyclesTheme {
             System.out.println("Сумма единиц - нечетное число");
         }
         System.out.println();
-        // сократил количество своего гигантского кода на 6 строк...можно сделать как-то еще проще?
+        // сократил количество своего гигантского кода!! очень круто, спасибо, Макс!!
 
         //6.Отображение фигур в консоли
         System.out.println("6. Отображение фигур в консоли");
@@ -203,7 +153,7 @@ public class CyclesTheme {
         System.out.println("7.Отображение ASCII-символов");
         System.out.println(" Dec  Char");
         for (i = 0; i < 256; i++) {
-            System.out.printf("%4d%4c", i, (char)i);
+            System.out.printf("%4d%4c", i, (char) i);
             System.out.println();
         }
         System.out.println();
@@ -211,6 +161,14 @@ public class CyclesTheme {
         //10.Вывод таблицы умножения Пифагора
         System.out.println("10.Вывод таблицы умножения Пифагора");
         for (i = 1; i < 10; i++) {
+            if (i ==1) {
+                System.out.printf("%3s", " ");;
+            } else {
+                System.out.printf("%3d", i);
+            }
+        }
+        System.out.println();
+        for (i = 2; i < 10; i++) {
             for (j = 1; j < 10; j++) {
                 System.out.printf("%3d", i * j);
             }
