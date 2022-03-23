@@ -202,7 +202,7 @@ public class CyclesTheme {
         //7.Отображение ASCII-символов
         System.out.println("7.Отображение ASCII-символов");
         System.out.println(" Dec  Char");
-        for (i = 0; i < 2; i++) {
+        for (i = 0; i < 256; i++) {
             System.out.printf("%4d%4c", i, (char)i);
             System.out.println();
         }
