@@ -12,37 +12,35 @@ public class CyclesTheme {
             } else {
                 sumOdd += i;
             }
-        } while(i <= 20);
+        } while(i < 22);
         System.out.println("Sum even = " + sumEven);
         System.out.println("Sum odd = " + sumOdd);
         System.out.println();
 
         //2.Вывод чисел между max и min
         System.out.println("2.Вывод чисел между max и min");
-        int maxNum = 10;
-        int minNum = -1;
-        int zNum = 5;
-        if (maxNum > zNum) {
-            maxNum = maxNum;
-        } else if (zNum > maxNum) {
-            maxNum = zNum;
+        int maxNum = 0;
+        int minNum = 0;
+        int zNum = 0;
+        if ((10 > 5) & (10 > -1)) {
+            maxNum = 10;
+        } else if ((5 > 10) & (5 > -1)) {
+            maxNum = 5;
         } else {
-            maxNum = minNum;
+            maxNum = -1;
         }
-        if (maxNum < zNum) {
-            minNum = maxNum;
-        } else if (minNum < zNum) {
-            minNum = minNum;
-        }
-        else {
-            zNum = minNum;
+        if ((10 < 5) & (10 < -1)) {
+            minNum = 10;
+        } else if ((5 < 10) & (5 < -1)) {
+            minNum = 5;
+        } else {
+            minNum = -1;
         }
         for(i = maxNum - 1; i > minNum; i--) {
             System.out.printf("%2d;", i);
         }
         System.out.println();
         System.out.println();
-
 
         //3.Вывод реверсивного числа и суммы его цифр
         System.out.println("3.Вывод реверсивного числа и суммы его цифр");
@@ -51,13 +49,11 @@ public class CyclesTheme {
         int sumDigit = 0;
         while(srcNum > 0) {
             digit = srcNum % 10;
-            srcNum = srcNum / 10;
+            srcNum /= 10;
             System.out.print(digit);
-            sumDigit = sumDigit + digit;
+            sumDigit += digit;
         }
-        System.out.println();
-        System.out.println("Sum numbers = " + sumDigit);
-        System.out.println();
+        System.out.println("Sum numbers = " + sumDigit + "\n");
         
         //4.Вывод чисел на консоль в несколько строк
         System.out.println("4.Вывод чисел на консоль в несколько строк");
@@ -66,6 +62,10 @@ public class CyclesTheme {
             counter++;
                 if (counter % 5 == 0) {
                     System.out.printf("%3d%n", i);
+                } else if (i == 23) {
+                    for (i = 23; counter < 16; counter++) {
+                        System.out.printf("%3d", 0);
+                    }
                 } else {
                     System.out.printf("%3d", i);
                 }
@@ -79,7 +79,7 @@ public class CyclesTheme {
         int sumOne = 0;
         while(srcNum  > 0) {
             digit = srcNum % 10;
-            srcNum = srcNum / 10;
+            srcNum /= 10;
             if (digit == 1) {
                 sumOne = sumOne + digit;
                 System.out.printf("%d; ", digit);
@@ -92,7 +92,6 @@ public class CyclesTheme {
             System.out.println("Сумма единиц - нечетное число");
         }
         System.out.println();
-        // сократил количество своего гигантского кода!! очень круто, спасибо, Макс!!
 
         //6.Отображение фигур в консоли
         System.out.println("6. Отображение фигур в консоли");
@@ -119,7 +118,6 @@ public class CyclesTheme {
         System.out.println();
         }
         System.out.println();
-        //С ромбом пока так, но кажется, что есть способ сделать легче
         condition = 1;
         i = 0;
         j = 0;
@@ -133,7 +131,6 @@ public class CyclesTheme {
             condition++;
             System.out.println();
         } while (i < 2);
-
         condition = 3;
         i = 0;
         j = 0;
