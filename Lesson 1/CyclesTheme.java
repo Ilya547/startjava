@@ -14,24 +14,23 @@ public class CyclesTheme {
             }
         } while(i < 22);
         System.out.println("Sum even = " + sumEven);
-        System.out.println("Sum odd = " + sumOdd);
-        System.out.println();
+        System.out.println("Sum odd = " + sumOdd + "\n");
 
         //2.Вывод чисел между max и min
         System.out.println("2.Вывод чисел между max и min");
-        int maxNum = 0;
-        int minNum = 0;
-        int zNum = 0;
-        if ((10 > 5) & (10 > -1)) {
+        int maxNum = 10;
+        int minNum = -1;
+        int zNum = 5;
+        if ((maxNum > zNum) && (maxNum > minNum)) {
             maxNum = 10;
-        } else if ((5 > 10) & (5 > -1)) {
+        } else if ((zNum > maxNum) && (zNum > minNum)) {
             maxNum = 5;
         } else {
             maxNum = -1;
         }
-        if ((10 < 5) & (10 < -1)) {
+        if ((maxNum < zNum) && (maxNum < minNum)) {
             minNum = 10;
-        } else if ((5 < 10) & (5 < -1)) {
+        } else if ((zNum < maxNum) && (zNum < minNum)) {
             minNum = 5;
         } else {
             minNum = -1;
@@ -39,8 +38,7 @@ public class CyclesTheme {
         for(i = maxNum - 1; i > minNum; i--) {
             System.out.printf("%2d;", i);
         }
-        System.out.println();
-        System.out.println();
+        System.out.println("\n");
 
         //3.Вывод реверсивного числа и суммы его цифр
         System.out.println("3.Вывод реверсивного числа и суммы его цифр");
@@ -53,25 +51,24 @@ public class CyclesTheme {
             System.out.print(digit);
             sumDigit += digit;
         }
-        System.out.println("Sum numbers = " + sumDigit + "\n");
+        System.out.println("\nSum numbers = " + sumDigit + "\n");
         
         //4.Вывод чисел на консоль в несколько строк
         System.out.println("4.Вывод чисел на консоль в несколько строк");
         int counter = 0;
         for(i = 1; i < 24; i += 2) {
             counter++;
-                if (counter % 5 == 0) {
-                    System.out.printf("%3d%n", i);
-                } else if (i == 23) {
-                    for (i = 23; counter < 16; counter++) {
-                        System.out.printf("%3d", 0);
-                    }
-                } else {
-                    System.out.printf("%3d", i);
-                }
+            if (counter % 5 == 0) {
+                System.out.printf("%3d%n", i);
+                counter = 0;
+            } else {
+                System.out.printf("%3d", i);
+            }
         }
-        System.out.println();
-        System.out.println();
+        for (counter += 1; counter < 6; counter++) {
+                    System.out.printf("%3d", 0);
+        }
+        System.out.println("\n");
 
         //5.Проверка количества единиц на четность
         System.out.println("5.Проверка количества единиц на четность");
@@ -81,7 +78,7 @@ public class CyclesTheme {
             digit = srcNum % 10;
             srcNum /= 10;
             if (digit == 1) {
-                sumOne = sumOne + digit;
+                sumOne += digit;
                 System.out.printf("%d; ", digit);
             }
         }
@@ -113,7 +110,7 @@ public class CyclesTheme {
                 System.out.print("#");
             }
             i++;
-            j = j - condition;
+            j -= condition;
             condition--;
         System.out.println();
         }
@@ -127,7 +124,7 @@ public class CyclesTheme {
                 j++;
             } while (j < condition);
             i++;
-            j = j - condition;
+            j -= condition;
             condition++;
             System.out.println();
         } while (i < 2);
@@ -140,7 +137,7 @@ public class CyclesTheme {
                 j++;
             } while (j < condition);
             i++;
-            j = j - condition;
+            j -= condition;
             condition--;
             System.out.println();
         } while (i < 3);
@@ -155,10 +152,72 @@ public class CyclesTheme {
         }
         System.out.println();
 
+        //8.Проверка, является ли число палиндромом
+        System.out.println("8.Проверка, является ли число палиндромом");
+        srcNum = 12321;
+        sumDigit = 0;
+        digit = 0;
+        while(srcNum > 0) {
+            digit = srcNum % 10;
+            if (srcNum < 10) {
+                digit = srcNum;
+                sumDigit = (sumDigit + digit);
+                srcNum = 12321;
+                break;
+            }
+            sumDigit = (sumDigit + digit) * 10;
+            srcNum /= 10;
+        }
+        if (sumDigit == srcNum) {
+            System.out.println(srcNum + " - является палиндромом\n");
+        } else {
+            System.out.println(srcNum + " - не является палиндромом\n");
+        }
+
+        //9.Определение, является ли число счастливым
+        System.out.println("9. Определение, является ли число счастливым");
+        srcNum = 120012;
+        digit = 0;
+        sumDigit = 0;
+        int sumDigit2 = 0;
+        for (counter = 0; counter < 3;counter++) {
+            if (counter < 2) {
+            digit = srcNum % 10;
+            sumDigit += digit;
+            srcNum /= 10;
+            System.out.printf("%d + ", digit);
+            } else {
+                digit = srcNum % 10;
+                sumDigit += digit;
+                srcNum /= 10;
+            System.out.printf("%d = ", digit);
+            System.out.printf("%d%n", sumDigit);
+            }
+        }
+        for (counter = 0; counter < 3;counter++) {
+            if (counter < 2) {
+            digit = srcNum % 10;
+            sumDigit2 += digit;
+            srcNum /= 10;
+            System.out.printf("%d + ", digit);
+            } else {
+                digit = srcNum % 10;
+                sumDigit2 += digit;
+                srcNum /= 10;
+            System.out.printf("%d = ", digit);
+            System.out.printf("%d%n", sumDigit2);
+            }
+        }
+        if (sumDigit == sumDigit2) {
+            System.out.println("Число является счастливым\n");
+        } else {
+            System.out.println("Число не является счастливым\n");
+        }
+
         //10.Вывод таблицы умножения Пифагора
         System.out.println("10.Вывод таблицы умножения Пифагора");
         for (i = 1; i < 10; i++) {
-            if (i ==1) {
+            if (i == 1) {
                 System.out.printf("%3s", " ");;
             } else {
                 System.out.printf("%3d", i);
