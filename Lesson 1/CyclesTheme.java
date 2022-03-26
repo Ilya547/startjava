@@ -65,7 +65,10 @@ public class CyclesTheme {
                 System.out.printf("%3d", i);
             }
         }
-        for (counter += 1; counter < 6; counter++) {
+        for (; counter <= 5; counter++) {
+            if (counter == 5) {
+                break;
+            }
                     System.out.printf("%3d", 0);
         }
         System.out.println("\n");
@@ -146,7 +149,7 @@ public class CyclesTheme {
         //7.Отображение ASCII-символов
         System.out.println("7.Отображение ASCII-символов");
         System.out.println(" Dec  Char");
-        for (i = 0; i < 256; i++) {
+        for (i = 0; i < 2; i++) {
             System.out.printf("%4d%4c", i, (char) i);
             System.out.println();
         }
@@ -161,7 +164,7 @@ public class CyclesTheme {
             digit = srcNum % 10;
             if (srcNum < 10) {
                 digit = srcNum;
-                sumDigit = (sumDigit + digit);
+                sumDigit += digit;
                 srcNum = 12321;
                 break;
             }
@@ -181,32 +184,26 @@ public class CyclesTheme {
         sumDigit = 0;
         int sumDigit2 = 0;
         for (counter = 0; counter < 3;counter++) {
-            if (counter < 2) {
             digit = srcNum % 10;
+            if (counter < 2) {
+                System.out.printf("%d + ", digit);
+            } else {
+                System.out.printf("%d = ", digit);
+                System.out.printf("%d%n", sumDigit);
+            }
             sumDigit += digit;
             srcNum /= 10;
-            System.out.printf("%d + ", digit);
-            } else {
-                digit = srcNum % 10;
-                sumDigit += digit;
-                srcNum /= 10;
-            System.out.printf("%d = ", digit);
-            System.out.printf("%d%n", sumDigit);
-            }
         }
         for (counter = 0; counter < 3;counter++) {
-            if (counter < 2) {
             digit = srcNum % 10;
+            if (counter < 2) {
+                System.out.printf("%d + ", digit);
+            } else {
+                System.out.printf("%d = ", digit);
+                System.out.printf("%d%n", sumDigit2);
+            }
             sumDigit2 += digit;
             srcNum /= 10;
-            System.out.printf("%d + ", digit);
-            } else {
-                digit = srcNum % 10;
-                sumDigit2 += digit;
-                srcNum /= 10;
-            System.out.printf("%d = ", digit);
-            System.out.printf("%d%n", sumDigit2);
-            }
         }
         if (sumDigit == sumDigit2) {
             System.out.println("Число является счастливым\n");
@@ -228,8 +225,8 @@ public class CyclesTheme {
             for (j = 1; j < 10; j++) {
                 System.out.printf("%3d", i * j);
             }
-        System.out.println();
-        j = 1;
+            System.out.println();
+            j = 1;
         }
     }   
 }
