@@ -18,22 +18,16 @@ public class CyclesTheme {
 
         //2.Вывод чисел между max и min
         System.out.println("2.Вывод чисел между max и min");
-        int maxNum = 10;
-        int minNum = -1;
-        int zNum = 5;
-        if ((maxNum > zNum) && (maxNum > minNum)) {
-            maxNum = 10;
-        } else if ((zNum > maxNum) && (zNum > minNum)) {
-            maxNum = 5;
-        } else {
-            maxNum = -1;
-        }
-        if ((maxNum < zNum) && (maxNum < minNum)) {
-            minNum = 10;
-        } else if ((zNum < maxNum) && (zNum < minNum)) {
-            minNum = 5;
-        } else {
-            minNum = -1;
+        int array[] = {-1, 5, 10};
+        int maxNum = array[0];
+        int minNum = array[0];
+        for (i = 0; i < array.length;i++) {
+            if (array[i] < minNum) {
+                minNum = array[i];
+            }
+            if (array[i] > maxNum) {
+                maxNum = array[i];
+            }
         }
         for(i = maxNum - 1; i > minNum; i--) {
             System.out.printf("%2d;", i);
@@ -69,7 +63,7 @@ public class CyclesTheme {
             if (counter == 5) {
                 break;
             }
-                    System.out.printf("%3d", 0);
+            System.out.printf("%3d", 0);
         }
         System.out.println("\n");
 
@@ -149,9 +143,8 @@ public class CyclesTheme {
         //7.Отображение ASCII-символов
         System.out.println("7.Отображение ASCII-символов");
         System.out.println(" Dec  Char");
-        for (i = 0; i < 2; i++) {
-            System.out.printf("%4d%4c", i, (char) i);
-            System.out.println();
+        for (i = 0; i < 256; i++) {
+            System.out.printf("%4d%4c%n", i, (char) i);
         }
         System.out.println();
 
@@ -179,30 +172,19 @@ public class CyclesTheme {
 
         //9.Определение, является ли число счастливым
         System.out.println("9. Определение, является ли число счастливым");
-        srcNum = 120012;
+        srcNum = 123456;
         digit = 0;
         sumDigit = 0;
         int sumDigit2 = 0;
-        for (counter = 0; counter < 3;counter++) {
+        for (i = 0; i < 6; i++) {
             digit = srcNum % 10;
-            if (counter < 2) {
-                System.out.printf("%d + ", digit);
-            } else {
+            if ((i == 2) || (i == 5)) {
                 System.out.printf("%d = ", digit);
                 System.out.printf("%d%n", sumDigit);
+            } else {
+                System.out.printf("%d + ", digit);
             }
             sumDigit += digit;
-            srcNum /= 10;
-        }
-        for (counter = 0; counter < 3;counter++) {
-            digit = srcNum % 10;
-            if (counter < 2) {
-                System.out.printf("%d + ", digit);
-            } else {
-                System.out.printf("%d = ", digit);
-                System.out.printf("%d%n", sumDigit2);
-            }
-            sumDigit2 += digit;
             srcNum /= 10;
         }
         if (sumDigit == sumDigit2) {
