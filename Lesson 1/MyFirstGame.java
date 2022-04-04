@@ -4,9 +4,9 @@ public class MyFirstGame {
         System.out.println("2.Игра “Угадай число”");
         int minNumber = 0;
         int maxNumber = 100;
-        int targetNumber = 98;
-        int playerNumber = 101;
-        while ((playerNumber != targetNumber + 1) && (playerNumber != targetNumber - 1)) {
+        int targetNumber = 1;
+        int playerNumber = 100;
+        while (playerNumber != targetNumber) {
             playerNumber = (maxNumber + minNumber) / 2;
             if (playerNumber > targetNumber) {
                 System.out.print(playerNumber);
@@ -20,12 +20,6 @@ public class MyFirstGame {
                 break;
             }
         }
-        if (playerNumber > targetNumber) {
-            playerNumber -= 1; 
-        } else if (playerNumber < targetNumber) {
-            playerNumber += 1;
-        }
-        System.out.print(playerNumber);
-        System.out.print(" Вы победили!");
+        System.out.print(playerNumber + " Вы победили!");
     }   
 }
