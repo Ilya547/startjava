@@ -1,6 +1,6 @@
 public class Calculator {
     public static void main(String[] args) {
-        //1.Калькулятор
+        //1.Калькулятор.
         System.out.println("1.Калькулятор");
         int a = 2;
         int b = 8;
