@@ -22,6 +22,5 @@ public class Calculator {
             }
         } 
         System.out.println(a + " " + sign + " " + b + " = " + result);
-        System.out.print("1 + 2 = Java");
     }
 }
