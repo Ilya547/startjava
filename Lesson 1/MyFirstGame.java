@@ -1,34 +1,30 @@
 public class MyFirstGame {
     public static void main(String[] args) {
         System.out.println("2.Игра “Угадай число”");
-        int srcNum = 100;
-        int srcNumPrev = 100;
-        int y = 99;
-        srcNum /= 2;
-        while ((srcNumPrev - srcNum) / 2 > 1) {
-            System.out.print(srcNum);
-             if (srcNum > y) {
+        int minNumber = 0;
+        int maxNumber = 100;
+        int targetNumber = 98;
+        int playerNumber = 101;
+        while ((playerNumber != targetNumber + 1) && (playerNumber != targetNumber - 1)) {
+            playerNumber = (maxNumber + minNumber) / 2;
+            if (playerNumber > targetNumber) {
+                System.out.print(playerNumber);
                 System.out.print(" данное число больше того, что загадал компьютер\n");
-                srcNum = srcNum - (srcNumPrev - srcNum) / 2;
-                srcNumPrev /= 2;
-            } else if (srcNum < y) {
+                maxNumber = playerNumber;
+            } else if (playerNumber < targetNumber) {
+                System.out.print(playerNumber);
                 System.out.print(" данное число меньше того, что загадал компьютер\n");
-                srcNum = srcNum + (srcNumPrev - srcNum) / 2;
-            } else if (srcNum == y) {
+                minNumber = playerNumber;
+            } else {
                 break;
             }
         }
-        while (srcNum != y) {
-            System.out.print(srcNum);
-            if (srcNum > y) {
-                System.out.print(" @данное число больше того, что загадал компьютер\n");
-                srcNum -= 1; 
-            } else if (srcNum < y) {
-                System.out.print(" #данное число меньше того, что загадал компьютер\n");
-                srcNum += 1;
-            }
-        } 
-        System.out.print(srcNum);
+        if (playerNumber > targetNumber) {
+            playerNumber -= 1; 
+        } else if (playerNumber < targetNumber) {
+            playerNumber += 1;
+        }
+        System.out.print(playerNumber);
         System.out.print(" Вы победили!");
     }   
 }
