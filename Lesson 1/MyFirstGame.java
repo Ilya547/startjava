@@ -10,14 +10,12 @@ public class MyFirstGame {
             playerNumber = (maxNumber + minNumber) / 2;
             if (playerNumber > targetNumber) {
                 System.out.print(playerNumber);
-                System.out.print(" данное число больше того, что загадал компьютер\n");
+                System.out.print(" больше того, что загадал компьютер\n");
                 maxNumber = playerNumber;
             } else if (playerNumber < targetNumber) {
                 System.out.print(playerNumber);
-                System.out.print(" данное число меньше того, что загадал компьютер\n");
+                System.out.print(" меньше того, что загадал компьютер\n");
                 minNumber = playerNumber;
-            } else {
-                break;
             }
         }
         System.out.print(playerNumber + " Вы победили!");
