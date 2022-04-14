@@ -24,7 +24,7 @@ public class Calculator {
             this.sign = sign;
         }
 
-        public void answer() {
+        public void calculations() {
             int result = 1;
             switch(sign) {
                 case '+' :
