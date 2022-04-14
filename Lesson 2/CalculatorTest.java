@@ -7,21 +7,18 @@ public class CalculatorTest {
         while (reply.equals("yes")) {
             System.out.println("Введите первое число:");
 
-            int firstNumber = sc.nextInt();
-            calculatorOne.setFirstNumber(firstNumber);
+            calculatorOne.setFirstNumber(sc.nextInt());
 
             System.out.println("Введите знак математической операции:");
 
-            char sign = sc.next().charAt(0);
-            calculatorOne.setSign(sign);
+            calculatorOne.setSign(sc.next().charAt(0));
 
             System.out.println("Введите второе число:");
 
-            int secondNumber = sc.nextInt();
-            calculatorOne.setSecondNumber(secondNumber);
+            calculatorOne.setSecondNumber(sc.nextInt());
 
             System.out.println("Результат: ");
-            calculatorOne.answer();
+            calculatorOne.calculations();
             
             reply = "";
             while ((!reply.equals("yes")) && (!reply.equals("no"))) {
