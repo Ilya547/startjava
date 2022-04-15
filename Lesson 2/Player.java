@@ -1,25 +1,20 @@
-import java.util.Scanner;
 public class Player {
     private String name;
-    private int playerNumber;
+    private int number;
 
-    public int getPlayerNumber() {
-        return playerNumber;
+    public Player(String name) {
+    this.name = name;
     }
 
-    public void setPlayerNumber(int playerNumber) {
-        this.playerNumber = playerNumber;
+    public int getNumber() {
+        return number;
+    }
+
+    public void setNumber(int number) {
+        this.number = number;
     }
 
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Player(String name) {
-        this.name = name;
     }
 }
