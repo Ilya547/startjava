@@ -24,14 +24,14 @@ public class GuessNumberTest {
         while (GuessNumberOne.getReply().equals("yes")) {
             System.out.println(playerOne.getName() + ", введите число");
 
-            GuessNumberOne.setPlayerNumberGame(scan.nextInt());
+            GuessNumberOne.setnumberGame(scan.nextInt());
 
             GuessNumberOne.runGame();
 
-            if (GuessNumberOne.getPlayerNumberGame() != GuessNumberOne.getTargetNumber()) {
+            if (GuessNumberOne.getnumberGame() != GuessNumberOne.getTargetNumber()) {
                 System.out.println(playerTwo.getName() + ", введите число");
 
-                GuessNumberOne.setPlayerNumberGame(scan.nextInt());
+                GuessNumberOne.setnumberGame(scan.nextInt());
 
                 GuessNumberOne.runGame();
             }
