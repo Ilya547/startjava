@@ -29,6 +29,5 @@ public class JaegerTest {
         System.out.println("Он может выполнять общие действия:");
         System.out.println(jaegerTwo.scanKaiju());
         jaegerTwo.killKaiju();
-
     }
 }
