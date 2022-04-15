@@ -5,6 +5,11 @@ public class GuessNumber {
     private int targetNumber;
     private String reply;
 
+    public GuessNumber(String nameOne, String nameTwo) {
+        this.nameOne = nameOne;
+        this.nameTwo = nameTwo;
+    }
+
     public String getReply() {
         return reply;
     }
@@ -29,11 +34,6 @@ public class GuessNumber {
     public void setPlayerNumberGame(int playerNumberGame) {
         this.playerNumberGame = playerNumberGame;
     }
-
-    public GuessNumber(String nameOne, String nameTwo) {
-        this.nameOne = nameOne;
-        this.nameTwo = nameTwo;
-    } 
 
     public void runGame() {
         while (playerNumberGame > 0) {
