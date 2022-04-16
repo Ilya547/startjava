@@ -15,7 +15,7 @@ public class Calculator {
         this.sign = sign;
     }
 
-    public void startCalculation() {
+    public int calculate() {
         int result = 1;
         switch(sign) {
             case '+' :
@@ -38,7 +38,7 @@ public class Calculator {
                     result *= firstNumber;
                 }
                 break;
-            }
-            System.out.println(result);
         }
+            return result;
+    }
 }
