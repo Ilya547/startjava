@@ -1,13 +1,19 @@
+import java.util.Random;
+
+import java.util.Scanner;
+
 public class GuessNumber {
     private String nameOne;
     private String nameTwo;
     private int playerNumberGame;
     private int targetNumber;
     private String reply;
+    private Player playerOne;
+    private Player playerTwo;
 
-    public GuessNumber(String nameOne, String nameTwo) {
-        this.nameOne = nameOne;
-        this.nameTwo = nameTwo;
+    public GuessNumber(Player playerOne, Player playerTwo) {
+        this.playerOne = playerOne;
+        this.playerTwo = playerTwo;
     }
 
     public String getReply() {
@@ -17,7 +23,6 @@ public class GuessNumber {
     public void setReply(String reply) {
         this.reply = reply;
     }
-
 
     public int getTargetNumber() {
         return targetNumber;
@@ -35,22 +40,23 @@ public class GuessNumber {
         this.playerNumberGame = playerNumberGame;
     }
 
-    public void runGame() {
-        while (playerNumberGame > 0) {
-            if ((playerNumberGame != targetNumber) && (playerNumberGame > targetNumber)) {
+    public void launch() {
+        Random r = new Random();
+        targetNumber = r.nextInt(101) + 1;
+        System.out.println("targetNumber " + targetNumber);
+        Scanner scan = new Scanner(System.in);
+        do {
+            System.out.println("введите число");
+            playerNumberGame = scan.nextInt();
+            if (playerNumberGame > targetNumber) {
                 System.out.println("Данное число больше того, что загадал компьютер. Ход переходит к другому игроку :-(");
-                break;
-            } else if ((playerNumberGame != targetNumber) && (playerNumberGame < targetNumber)) {
+            } else if (playerNumberGame < targetNumber) {
                 System.out.println("Данное число меньше того, что загадал компьютер. Ход переходит к другому игроку :-(");
-                System.out.println("введенное число " + playerNumberGame);
-                break;
             } else if (playerNumberGame == targetNumber) {
                 System.out.println("Вы угадали!");
-                reply = "";
-                break;
             } else {
                 System.out.println("Вам необходимо ввести число в диапазоне от 0 до 100. Попробуйте еще.");
             }
-        }
+        } while (playerNumberGame != targetNumber);
     }
 }
