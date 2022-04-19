@@ -3,7 +3,6 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class GuessNumber {
-
     private Player playerOne;
     private Player playerTwo;
 
