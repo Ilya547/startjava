@@ -15,8 +15,9 @@ public class GuessNumber {
         Random r = new Random();
         int targetNumber = r.nextInt(101) + 1;
         Scanner scan = new Scanner(System.in);
-        int playerNumber = 101;
-        while (playerNumber != targetNumber) {
+        int playerNumber;
+        while (true) {
+            System.out.println("targetNumber " + targetNumber);
             System.out.println(playerOne.getName() + " ,введите число в диапазоне (0, 100]");
             playerOne.setNumber(scan.nextInt());
             playerNumber = playerOne.getNumber();
@@ -26,18 +27,18 @@ public class GuessNumber {
                 System.out.println("Данное число меньше того, что загадал компьютер. Ход переходит к другому игроку :-(");
             } else if (playerNumber == targetNumber) {
                 System.out.println(playerOne.getName() + ", вы угадали!");
+                break;
             }
-            if (playerNumber != targetNumber) {
-                playerNumber = playerTwo.getNumber();
-                System.out.println(playerTwo.getName() + " ,введите число в диапазоне (0, 100]");
-                playerNumber = scan.nextInt();
-                if (playerNumber > targetNumber) {
-                    System.out.println("Данное число больше того, что загадал компьютер. Ход переходит к другому игроку :-(");
-                } else if (playerNumber < targetNumber) {
-                    System.out.println("Данное число меньше того, что загадал компьютер. Ход переходит к другому игроку :-(");
-                } else if (playerNumber == targetNumber) {
-                    System.out.println(playerTwo.getName() + ", вы угадали!");
-                }
+            playerNumber = playerTwo.getNumber();
+            System.out.println(playerTwo.getName() + " ,введите число в диапазоне (0, 100]");
+            playerNumber = scan.nextInt();
+            if (playerNumber > targetNumber) {
+                System.out.println("Данное число больше того, что загадал компьютер. Ход переходит к другому игроку :-(");
+            } else if (playerNumber < targetNumber) {
+                System.out.println("Данное число меньше того, что загадал компьютер. Ход переходит к другому игроку :-(");
+            } else if (playerNumber == targetNumber) {
+                System.out.println(playerTwo.getName() + ", вы угадали!");
+                break;
             }
         }
     }
