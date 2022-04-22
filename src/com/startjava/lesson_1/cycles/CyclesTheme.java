@@ -1,3 +1,5 @@
+package com.startjava.lesson_1.cycles;
+
 public class CyclesTheme {
     public static void main(String[] args) {
         //1. Подсчет суммы четных и нечетных чисел

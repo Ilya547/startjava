@@ -1,3 +1,5 @@
+package com.startjava.lesson_1.variables;
+
 public class VariablesTheme {
     public static void main(String[] args) {
         //1.Создание переменных и вывод их значений на консоль
