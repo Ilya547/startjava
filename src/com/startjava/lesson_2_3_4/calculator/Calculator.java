@@ -1,5 +1,7 @@
 package com.startjava.lesson_2_3_4.calculator;
 
+import java.util.Scanner;
+
 public class Calculator {
     private int firstNumber;
     private int secondNumber;
@@ -22,34 +24,31 @@ public class Calculator {
         this.mathExpression = mathExpression;
     }
 
-    public void splitString () {
-        String[] partsString = mathExpression.split(" ");
-        firstNumber = Integer.parseInt(partsString[0]);
-        sign = partsString[1].charAt(0);
-        secondNumber = Integer.parseInt(partsString[2]);
+    public void splitExpression () {
+        String[] partsExpression = mathExpression.split(" ");
+        firstNumber = Integer.parseInt(partsExpression[0]);
+        sign = partsExpression[1].charAt(0);
+        secondNumber = Integer.parseInt(partsExpression[2]);
     }
 
     public int calculate() {
-        int result = 1;
+        Scanner sc = new Scanner(System.in);
+        mathExpression = sc.nextLine();
+        splitExpression();
+        int result = 0;
         switch(sign) {
             case '+' :
-                result = firstNumber + secondNumber;
-                break;
+                return firstNumber + secondNumber;
             case '-' :
-                result = Math.subtractExact(firstNumber, secondNumber);
-                break;
+                return Math.subtractExact(firstNumber, secondNumber);
             case '*' :
-                result = Math.multiplyExact(firstNumber, secondNumber);
-                break;
+                return Math.multiplyExact(firstNumber, secondNumber);
             case '/' :
-                result = (int) Math.floorDiv(firstNumber, secondNumber);
-                break;
+                return (int) Math.floorDiv(firstNumber, secondNumber);
             case '%' :
-                result = firstNumber % secondNumber;
-                break;
+                return firstNumber % secondNumber;
             case '^' :
-                result = (int) Math.pow(firstNumber, secondNumber);
-                break;
+                return (int) Math.pow(firstNumber, secondNumber);
         }
         return result;
     }

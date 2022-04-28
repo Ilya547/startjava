@@ -9,13 +9,11 @@ public class CalculatorTest {
         String reply = "yes";
         while (reply.equals("yes")) {
             System.out.print("Введите математическое выражение:");
-            calculator.setMathExpression(sc.nextLine());
-            calculator.splitString();
             System.out.println("Результат математического выражения: " + calculator.calculate());
             do {
                 System.out.println("Хотите продолжить вычисления? [yes/no]:");
                 reply = sc.nextLine();
-            } while ((!reply.equals("yes")) && (!reply.equals("no")));
+            } while (!reply.equals("yes") && !reply.equals("no"));
         }
     }
 }
