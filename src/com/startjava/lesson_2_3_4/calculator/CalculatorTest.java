@@ -8,8 +8,7 @@ public class CalculatorTest {
         String reply = "yes";
         while (reply.equals("yes")) {
             System.out.print("Введите математическое выражение:");
-            Calculator calculator = new Calculator(sc.nextLine());
-            System.out.println("Результат математического выражения: " + calculator.calculate());
+            Calculator.calculate();
             do {
                 System.out.println("Хотите продолжить вычисления? [yes/no]:");
                 reply = sc.nextLine();
