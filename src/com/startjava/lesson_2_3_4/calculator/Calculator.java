@@ -23,12 +23,11 @@ public class Calculator {
         firstNumber = Integer.parseInt(partsExpression[0]);
         sign = partsExpression[1].charAt(0);
         secondNumber = Integer.parseInt(partsExpression[2]);
-        System.out.println(2.2 % 1);
     }
 
     public static int calculate() {
         splitExpression();
-        if (firstNumber < 0 || secondNumber < 0 || firstNumber % 1 != 0 || secondNumber % 1 != 0 ) {
+        if (firstNumber < 0 || secondNumber < 0 || firstNumber % 1 != 0 || secondNumber % 1 != 0) {
             sign = ' ';
         }
         switch(sign) {
