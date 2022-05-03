@@ -4,7 +4,6 @@ public class Calculator {
     private static float firstNumber;
     private static float secondNumber;
     private static char sign;
-    protected static String mathExpression;
 
     public static int calculate() {
         splitExpression();
@@ -12,31 +11,19 @@ public class Calculator {
             sign = ' ';
         }
         switch(sign) {
-            case '+' -> {
-                return (int)(firstNumber + secondNumber);
-            }
-            case '-' -> {
-                return Math.subtractExact((int) firstNumber, (int) secondNumber);
-            }
-            case '*' -> {
-                return Math.multiplyExact((int)firstNumber, (int)secondNumber);
-            }
-            case '/' -> {
-                return Math.floorDiv((int)firstNumber, (int)secondNumber);
-            }
-            case '%' -> {
-                return ((int)firstNumber + (int)secondNumber);
-            }
-            case '^' -> {
-                return (int) Math.pow(firstNumber, secondNumber);
-            }
-            default -> System.out.println("Предупреждение, введите корректные значения!");
+            case '+' : return (int) (firstNumber + secondNumber);
+            case '-' : return Math.subtractExact((int) firstNumber, (int) secondNumber);
+            case '*' : return Math.multiplyExact((int) firstNumber, (int) secondNumber);
+            case '/' : return Math.floorDiv((int) firstNumber, (int) secondNumber);
+            case '%' : return ((int) firstNumber + (int) secondNumber);
+            case '^' : return (int) Math.pow(firstNumber, secondNumber);
+            default : System.out.println("Предупреждение, введите корректные значения!");
         }
         return 0;
     }
 
     private static void splitExpression() {
-        String[] partsExpression = mathExpression.split(" ");
+        String[] partsExpression = CalculatorTest.mathExpression.split(" ");
         firstNumber = Float.parseFloat(partsExpression[0]);
         sign = partsExpression[1].charAt(0);
         secondNumber = Float.parseFloat(partsExpression[2]);
