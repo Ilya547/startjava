@@ -1,29 +1,10 @@
 package com.startjava.lesson_2_3_4.calculator;
 
-import java.util.Scanner;
-
 public class Calculator {
-    private static int firstNumber;
-    private static int secondNumber;
+    private static float firstNumber;
+    private static float secondNumber;
     private static char sign;
-    private static String mathExpression;
-
-    public Calculator(String mathExpression) {
-        this.mathExpression = mathExpression;
-    }
-
-    public void setMathExpression(String mathExpression) {
-        this.mathExpression = mathExpression;
-    }
-
-    public static void splitExpression() {
-        Scanner sc = new Scanner(System.in);
-        mathExpression = sc.nextLine();
-        String[] partsExpression = mathExpression.split(" ");
-        firstNumber = Integer.parseInt(partsExpression[0]);
-        sign = partsExpression[1].charAt(0);
-        secondNumber = Integer.parseInt(partsExpression[2]);
-    }
+    protected static String mathExpression;
 
     public static int calculate() {
         splitExpression();
@@ -31,14 +12,33 @@ public class Calculator {
             sign = ' ';
         }
         switch(sign) {
-            case '+' -> System.out.println(firstNumber + secondNumber);
-            case '-' -> System.out.println(Math.subtractExact(firstNumber, secondNumber));
-            case '*' -> System.out.println(Math.multiplyExact(firstNumber, secondNumber));
-            case '/' -> System.out.println((int) Math.floorDiv(firstNumber, secondNumber));
-            case '%' -> System.out.println(firstNumber % secondNumber);
-            case '^' -> System.out.println((int) Math.pow(firstNumber, secondNumber));
-            default  -> System.out.println("Предупреждение, введите корректные значения!");
+            case '+' -> {
+                return (int)(firstNumber + secondNumber);
+            }
+            case '-' -> {
+                return Math.subtractExact((int) firstNumber, (int) secondNumber);
+            }
+            case '*' -> {
+                return Math.multiplyExact((int)firstNumber, (int)secondNumber);
+            }
+            case '/' -> {
+                return Math.floorDiv((int)firstNumber, (int)secondNumber);
+            }
+            case '%' -> {
+                return ((int)firstNumber + (int)secondNumber);
+            }
+            case '^' -> {
+                return (int) Math.pow(firstNumber, secondNumber);
+            }
+            default -> System.out.println("Предупреждение, введите корректные значения!");
         }
         return 0;
+    }
+
+    private static void splitExpression() {
+        String[] partsExpression = mathExpression.split(" ");
+        firstNumber = Float.parseFloat(partsExpression[0]);
+        sign = partsExpression[1].charAt(0);
+        secondNumber = Float.parseFloat(partsExpression[2]);
     }
 }
