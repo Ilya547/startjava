@@ -2,17 +2,15 @@ package com.startjava.lesson_2_3_4.calculator;
 
 import java.util.Scanner;
 
-import static com.startjava.lesson_2_3_4.calculator.Calculator.calculate;
-
 public class CalculatorTest {
-    protected static String mathExpression;
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String reply = "yes";
         while (reply.equals("yes")) {
             System.out.print("Введите математическое выражение:");
-            mathExpression = sc.nextLine();
-            System.out.println("Результат математического выражения: " + calculate());
+            String mathExpression = sc.nextLine();
+            System.out.print("Результат математического выражения: ");
+            Calculator.calculate(mathExpression);
             do {
                 System.out.println("Хотите продолжить вычисления? [yes/no]:");
                 reply = sc.nextLine();
