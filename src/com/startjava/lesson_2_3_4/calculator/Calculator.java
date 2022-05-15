@@ -5,7 +5,7 @@ public class Calculator {
     private static float secondNumber;
     private static char sign;
 
-    public static void calculate(String mathExpression) {
+    public static String calculate(String mathExpression) {
         String[] partsExpression = mathExpression.split(" ");
         firstNumber = Float.parseFloat(partsExpression[0]);
         sign = partsExpression[1].charAt(0);
@@ -13,14 +13,17 @@ public class Calculator {
         if (firstNumber < 0 || secondNumber < 0 || firstNumber % 1 != 0 || secondNumber % 1 != 0) {
             sign = ' ';
         }
-        switch(sign) {
-            case '+' -> System.out.println(Math.addExact((int)firstNumber, (int)secondNumber));
-            case '-' -> System.out.println(Math.subtractExact((int) firstNumber, (int) secondNumber));
-            case '*' -> System.out.println(Math.multiplyExact((int) firstNumber, (int) secondNumber));
-            case '/' -> System.out.println(Math.floorDiv((int) firstNumber, (int) secondNumber));
-            case '%' -> System.out.println((int) firstNumber % (int) secondNumber);
-            case '^' -> System.out.println(Math.pow((int) firstNumber, (int) secondNumber));
-            default -> System.out.println("Предупреждение, введите корректные значения!");
-        }
+        return switch(sign) {
+            case '+' -> String.valueOf(Math.addExact((int)firstNumber, (int)secondNumber));
+            case '-' -> String.valueOf(Math.subtractExact((int) firstNumber, (int) secondNumber));
+            case '*' -> String.valueOf(Math.multiplyExact((int) firstNumber, (int) secondNumber));
+            case '/' -> String.valueOf(Math.floorDiv((int) firstNumber, (int) secondNumber));
+            case '%' -> String.valueOf((int) firstNumber % (int) secondNumber);
+            case '^' -> String.valueOf((int) Math.pow(firstNumber, secondNumber));
+
+            case ' ' -> "Предупреждение! Используйте для вычислений только целые положительные числа\n";
+            default -> throw new IllegalStateException("Unexpected value: " + sign);
+        };
+
     }
 }
