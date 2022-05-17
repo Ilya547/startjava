@@ -9,8 +9,15 @@ public class CalculatorTest {
         while (reply.equals("yes")) {
             System.out.print("Введите математическое выражение:");
             String mathExpression = sc.nextLine();
-            System.out.print("Результат математического выражения: \n" );
-            System.out.println(Calculator.calculate(mathExpression));
+            try {
+                System.out.print("Результат математического выражения: \n" + Calculator.calculate(mathExpression));
+            } catch (NumberFormatException e) {
+                System.err.println("Предупреждение! Используйте для вычислений целые числа!\n");
+            } catch (IllegalArgumentException e) {
+                System.err.println("Предупреждение! Используйте для вычислений положительные числа!\n");
+            } catch (IllegalStateException e) {
+                System.err.println("Предупреждение! Используйте для вычислений знаки: '+' '-' '*' '/' '%' '^'\n");
+            }
             do {
                 System.out.println("\nХотите продолжить вычисления? [yes/no]:");
                 reply = sc.nextLine();
