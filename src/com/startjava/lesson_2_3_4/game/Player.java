@@ -3,12 +3,17 @@ package com.startjava.lesson_2_3_4.game;
 import java.util.Arrays;
 
 public class Player {
+    private int maxCount = 2;
     private String name;
-    private int[] numbers = new int[10];
+    private int[] numbers = new int[maxCount];
     private int count = 0;
 
     public Player(String name) {
         this.name = name;
+    }
+
+    public int getMaxCount() {
+        return maxCount;
     }
 
     public String getName() {
@@ -16,19 +21,20 @@ public class Player {
     }
 
     public int[] getNumbers() {
-        int[] copyNumbers = Arrays.copyOf(numbers, numbers.length);
-        return copyNumbers;
+        return Arrays.copyOf(numbers, count);
     }
 
-    public void setNumber(int numbers) {
-        this.numbers[count] = numbers;
+    public void setNumber(int number) {
+        this.numbers[count] = number;
+        count++;
     }
 
     public int getCount() {
         return count;
     }
 
-    public void setCount(int count) {
-        this.count += count;
+    public void clearNumbers() {
+        Arrays.fill(numbers, 0, count, 0);
+        count = 0;
     }
 }

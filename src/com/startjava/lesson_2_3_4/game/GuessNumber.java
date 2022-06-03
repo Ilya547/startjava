@@ -8,7 +8,7 @@ public class GuessNumber {
     private Player playerOne;
     private Player playerTwo;
     private int targetNumber;
-    private  Scanner scan = new Scanner(System.in);
+    private Scanner scan = new Scanner(System.in);
 
     public GuessNumber(Player playerOne, Player playerTwo) {
         this.playerOne = playerOne;
@@ -16,27 +16,24 @@ public class GuessNumber {
     }
 
     public void launch() {
-        clearNumbers(playerOne);
-        clearNumbers(playerTwo);
+        playerOne.clearNumbers();
+        playerTwo.clearNumbers();
         Random r = new Random();
         targetNumber = r.nextInt(100) + 1;
         System.out.println("targetNumber " + targetNumber);
-        System.out.println("У каждого игрока есть 10 попыток, чтобы угадать число.");
-        while (playerTwo.getCount() != playerTwo.getNumbers().length) {
+        System.out.println("У каждого игрока есть " + playerOne.getMaxCount() +  " попыток, чтобы угадать число.");
+        while (playerTwo.getCount() != playerTwo.getMaxCount()) {
             enterNumbers(playerOne);
-            compareNumbers(playerOne, targetNumber);
-            System.out.println(checkNumbersAttempts(playerOne));
-            System.out.println("playerOne.getNumbers()[playerOne.getCount() -1] " + playerOne.getNumbers()[playerOne.getCount() - 1]);
-            if (playerOne.getNumbers()[playerOne.getCount() - 1] == targetNumber) {
+            if (!compareNumbers(playerOne, targetNumber)) {
                 break;
             } else {
+                System.out.println(checkNumbersAttempts(playerOne));
                 enterNumbers(playerTwo);
-                compareNumbers(playerTwo, targetNumber);
-                System.out.println(checkNumbersAttempts(playerTwo));
-                if (playerTwo.getNumbers()[playerTwo.getCount() - 1] == targetNumber) {
+                if (!compareNumbers(playerTwo, targetNumber)) {
                     break;
                 }
             }
+            System.out.println(checkNumbersAttempts(playerTwo));
         }
         showNumbers(playerOne);
         showNumbers(playerTwo);
@@ -48,7 +45,6 @@ public class GuessNumber {
     }
 
     private boolean compareNumbers(Player player, int compNumber) {
-        player.setCount(1);
         if (player.getNumbers()[player.getCount() - 1] > compNumber) {
             System.out.println("Данное число больше того, что загадал компьютер. Ход переходит к другому игроку.");
             return true;
@@ -62,31 +58,26 @@ public class GuessNumber {
         }
     }
 
-    private void showNumbers(Player player) {
-        int[] copyArrayNumbers = Arrays.copyOf(player.getNumbers(), player.getCount());
-        if (player.getCount() != player.getNumbers().length) {
-            for(int i = 0; i < copyArrayNumbers.length; i++) {
-                System.out.print(copyArrayNumbers[i] + " ");
-            }
-        } else {
-            for(int i = 0; i < copyArrayNumbers.length; i++) {
-                System.out.print(copyArrayNumbers[i] + " ");
-            }
-        }
-        System.out.println(" ");
-    }
-
     private String checkNumbersAttempts(Player player) {
-        if (player.getCount() == player.getNumbers().length && player.getNumbers()[player.getCount() - 1] != targetNumber) {
+        if (player.getCount() == player.getMaxCount()) {
             return "У " + player.getName() + " закончились попытки.";
         } else {
             return "";
         }
     }
 
-    private void clearNumbers(Player player) {
-        Arrays.fill(player.getNumbers(), 0, player.getCount(), 0);
-        player.setCount(0);
+    private void showNumbers(Player player) {
+        int[] copyArrayNumbers = Arrays.copyOf(player.getNumbers(), player.getCount());
+        if (player.getCount() != player.getMaxCount()) {
+            for (int copyArrayNumber : copyArrayNumbers) {
+                System.out.print(copyArrayNumber + " ");
+            }
+        } else {
+            for (int copyArrayNumber : copyArrayNumbers) {
+                System.out.print(copyArrayNumber + " ");
+            }
+        }
+        System.out.println(" ");
     }
 }
 
