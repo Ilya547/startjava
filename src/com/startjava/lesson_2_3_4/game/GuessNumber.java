@@ -1,6 +1,5 @@
 package com.startjava.lesson_2_3_4.game;
 
-import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -23,16 +22,15 @@ public class GuessNumber {
         System.out.println("У каждого игрока есть " + playerOne.getMaxCount() +  " попыток, чтобы угадать число.");
         while (playerTwo.getCount() != playerTwo.getMaxCount()) {
             enterNumber(playerOne);
-            if (!compareNumbers(playerOne)) {
+            if (compareNumbers(playerOne)) {
                 break;
-            } else {
-                System.out.println(checkNumbersAttempts(playerOne));
-                enterNumber(playerTwo);
-                if (!compareNumbers(playerTwo)) {
-                    break;
-                }
             }
-            System.out.println(checkNumbersAttempts(playerTwo));
+            checkNumbersAttempts(playerOne);
+            enterNumber(playerTwo);
+            if (compareNumbers(playerTwo)) {
+                break;
+            }
+            checkNumbersAttempts(playerTwo);
         }
         showNumbers(playerOne);
         showNumbers(playerTwo);
@@ -50,24 +48,24 @@ public class GuessNumber {
             } else if (player.getCurrentNumber() < targetNumber) {
                 System.out.println("Данное число меньше того, что загадал компьютер. Ход переходит к другому игроку.");
             }
-            return true;
+            return false;
         }
         System.out.println("Игрок " + player.getName() + " угадал число " + targetNumber + " с " + player.getCount() + " попытки");
-        return false;
+        return true;
     }
 
-    private String checkNumbersAttempts(Player player) {
+    private void checkNumbersAttempts(Player player) {
         if (player.getCount() == player.getMaxCount()) {
-            return "У " + player.getName() + " закончились попытки.";
+            System.out.println("У " + player.getName() + " закончились попытки.");
         } else {
-            return "";
+            System.out.println("");
         }
     }
 
     private void showNumbers(Player player) {
-        int[] copyArrayNumbers = Arrays.copyOf(player.getNumbers(), player.getCount());
-            for (int copyArrayNumber : copyArrayNumbers) {
-                System.out.print(copyArrayNumber + " ");
+        int[] copyArrayNumbers = player.getNumbers();
+            for (int number : copyArrayNumbers) {
+                System.out.print(number + " ");
             }
         System.out.println(" ");
     }

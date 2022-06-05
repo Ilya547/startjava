@@ -25,12 +25,11 @@ public class Player {
     }
 
     public int getCurrentNumber() {
-        Arrays.copyOf(numbers, count);
         return numbers[count - 1];
     }
 
     public void setNumber(int number) {
-        this.numbers[count] = number;
+        numbers[count] = number;
         count++;
     }
 
