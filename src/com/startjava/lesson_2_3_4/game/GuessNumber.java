@@ -20,16 +20,15 @@ public class GuessNumber {
         playerTwo.clearNumbers();
         Random r = new Random();
         targetNumber = r.nextInt(100) + 1;
-        System.out.println("targetNumber " + targetNumber);
         System.out.println("У каждого игрока есть " + playerOne.getMaxCount() +  " попыток, чтобы угадать число.");
         while (playerTwo.getCount() != playerTwo.getMaxCount()) {
-            enterNumbers(playerOne);
-            if (!compareNumbers(playerOne, targetNumber)) {
+            enterNumber(playerOne);
+            if (!compareNumbers(playerOne)) {
                 break;
             } else {
                 System.out.println(checkNumbersAttempts(playerOne));
-                enterNumbers(playerTwo);
-                if (!compareNumbers(playerTwo, targetNumber)) {
+                enterNumber(playerTwo);
+                if (!compareNumbers(playerTwo)) {
                     break;
                 }
             }
@@ -39,23 +38,22 @@ public class GuessNumber {
         showNumbers(playerTwo);
     }
 
-    private void enterNumbers(Player player) {
+    private void enterNumber(Player player) {
         System.out.println(player.getName() + ",введите число в диапазоне (0, 100]");
         player.setNumber(scan.nextInt());
     }
 
-    private boolean compareNumbers(Player player, int compNumber) {
-        if (player.getNumbers()[player.getCount() - 1] > compNumber) {
-            System.out.println("Данное число больше того, что загадал компьютер. Ход переходит к другому игроку.");
-            return true;
-        } else if (player.getNumbers()[player.getCount() - 1] < compNumber) {
-            System.out.println("Данное число меньше того, что загадал компьютер. Ход переходит к другому игроку.");
+    private boolean compareNumbers(Player player) {
+        if (player.getCurrentNumber() != targetNumber) {
+            if (player.getCurrentNumber() > targetNumber) {
+                System.out.println("Данное число больше того, что загадал компьютер. Ход переходит к другому игроку.");
+            } else if (player.getCurrentNumber() < targetNumber) {
+                System.out.println("Данное число меньше того, что загадал компьютер. Ход переходит к другому игроку.");
+            }
             return true;
         }
-        else {
-            System.out.println("Игрок " + player.getName() + " угадал число " + compNumber + " с " + player.getCount() + " попытки");
-            return false;
-        }
+        System.out.println("Игрок " + player.getName() + " угадал число " + targetNumber + " с " + player.getCount() + " попытки");
+        return false;
     }
 
     private String checkNumbersAttempts(Player player) {
@@ -68,15 +66,9 @@ public class GuessNumber {
 
     private void showNumbers(Player player) {
         int[] copyArrayNumbers = Arrays.copyOf(player.getNumbers(), player.getCount());
-        if (player.getCount() != player.getMaxCount()) {
             for (int copyArrayNumber : copyArrayNumbers) {
                 System.out.print(copyArrayNumber + " ");
             }
-        } else {
-            for (int copyArrayNumber : copyArrayNumbers) {
-                System.out.print(copyArrayNumber + " ");
-            }
-        }
         System.out.println(" ");
     }
 }

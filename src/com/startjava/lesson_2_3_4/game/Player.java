@@ -3,7 +3,7 @@ package com.startjava.lesson_2_3_4.game;
 import java.util.Arrays;
 
 public class Player {
-    private int maxCount = 2;
+    private int maxCount = 10;
     private String name;
     private int[] numbers = new int[maxCount];
     private int count = 0;
@@ -22,6 +22,11 @@ public class Player {
 
     public int[] getNumbers() {
         return Arrays.copyOf(numbers, count);
+    }
+
+    public int getCurrentNumber() {
+        Arrays.copyOf(numbers, count);
+        return numbers[count - 1];
     }
 
     public void setNumber(int number) {
