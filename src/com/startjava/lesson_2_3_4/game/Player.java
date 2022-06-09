@@ -7,6 +7,7 @@ public class Player {
     private String name;
     private int[] numbers = new int[maxCount];
     private int count = 0;
+    private int numberWins = 0;
 
     public Player(String name) {
         this.name = name;
@@ -29,12 +30,30 @@ public class Player {
     }
 
     public void setNumber(int number) {
-        numbers[count] = number;
-        count++;
+        if (number < 101 && number > 0) {
+            numbers[count] = number;
+            count++;
+        } else {
+            System.err.println("Данное число не входит в диапазон (0, 100]. Ход переходит другому игроку.");
+            count++;
+        }
     }
 
     public int getCount() {
         return count;
+    }
+
+    public int getNumberWins() {
+        return numberWins;
+    }
+
+    public void setNumberWins(int numberW) {
+        if (numberW == 1) {
+            numberWins += numberW;
+        } else if (numberW == 0) {
+            numberWins = numberW;
+        }
+
     }
 
     public void clearNumbers() {
