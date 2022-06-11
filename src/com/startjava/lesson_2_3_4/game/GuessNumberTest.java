@@ -5,18 +5,10 @@ import java.util.Scanner;
 public class GuessNumberTest {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-        System.out.println("Введите имя первого игрока");
-        Player playerOne = new Player(scan.next());
 
-        System.out.println("Введите имя второго игрока");
-        Player playerTwo = new Player(scan.next());
+        Player[] players = new Player[3];
 
-        System.out.println("Введите имя третьего игрока");
-        Player playerThree = new Player(scan.next());
-
-        Player[] arrPlayers = {playerOne, playerTwo, playerThree};
-
-        GuessNumber game = new GuessNumber(arrPlayers);
+        GuessNumber game = new GuessNumber(players);
 
         String reply;
         do {

@@ -1,77 +1,94 @@
 package com.startjava.lesson_2_3_4.game;
 
+import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
 public class GuessNumber {
-    private int targetNumber;
+    private static int targetNumber = 0;
     private Scanner scan = new Scanner(System.in);
-    Random r = new Random();
-    private Player[] arrPlayers;
+    private static Random r = new Random();
+    private Player[] players;
 
-    public GuessNumber(Player[] arrPlayers) {
-        this.arrPlayers = arrPlayers;
-    }
-
-    public void setQueue() {
-        for (int i = arrPlayers.length - 1; i > 0; i--) {
-            Player tmp = arrPlayers[i];
-            int rnd = r.nextInt(2) + 1;
-            arrPlayers[i] = arrPlayers[rnd];
-            arrPlayers[rnd] = tmp;
+    public GuessNumber(Player[] Players) {
+        this.players = Players;
+        for (int i = 0; i < players.length; i++) {
+            System.out.println("Введите имя игрока");
+            players[i] = new Player(scan.next());
         }
     }
 
     public void launch() {
-        setQueue();
-        for (int i = 0; i < 3; i++) {
-            arrPlayers[0].clearNumbers();
-            arrPlayers[1].clearNumbers();
-            arrPlayers[2].clearNumbers();
-            targetNumber = r.nextInt(100) + 1;
-            System.out.println(targetNumber);
-            System.out.println("У каждого игрока есть " + arrPlayers[0].getMaxCount() +  " попыток, чтобы угадать число. Победитель определяется по результатам трех игр");
-            while (arrPlayers[2].getCount() != arrPlayers[2].getMaxCount()) {
-                enterNumber(arrPlayers[0]);
-                if (compareNumbers(arrPlayers[0])) {
-                    break;
-                }
-                checkNumbersAttempts(arrPlayers[0]);
-                enterNumber(arrPlayers[1]);
-                if (compareNumbers(arrPlayers[1])) {
-                    break;
-                }
-                checkNumbersAttempts(arrPlayers[1]);
-                enterNumber(arrPlayers[2]);
-                if (compareNumbers(arrPlayers[2])) {
-                    break;
+        clearWinnerNumbers();
+        castLots();
+        for (int i = 0; i < players.length; i++) {
+            clearNumbersAndTarget();
+            System.out.println("У каждого игрока есть " + players[0].getMaxCount() + " попыток, чтобы угадать число.\n"
+                    + "Победитель определяется по результатам трех игр.");
+            for (int k = 0; k < players[0].getMaxCount(); k++) {
+                installTargetNumber();
+                for (int j = 0; j < players.length; j++) {
+                    enterNumber(players[j]);
+                    if (compareNumbers(players[j])) {
+                        k = players[0].getMaxCount() + 1;
+                        break;
+                    }
+                    checkNumbersAttempts(players[j]);
                 }
             }
-            showNumbers(arrPlayers[0]);
-            showNumbers(arrPlayers[1]);
-            showNumbers(arrPlayers[2]);
+            showNumbers();
         }
         System.out.println(checkWinner());
-        cleanWinnerNumbers();
+
+    }
+
+    private void clearWinnerNumbers() {
+        for (int i = 0; i < players.length - 1; i++) {
+            if (players[i].getNumberWins() != 0) {
+                players[i].setNumberWins(0);
+            }
+        }
+    }
+
+    private void castLots() {
+        for (int i = players.length - 1; i > 0; i--) {
+            Player tmp = players[i];
+            int rnd = r.nextInt(i) + 1;
+            players[i] = players[rnd];
+            players[rnd] = tmp;
+        }
+    }
+
+    private void clearNumbersAndTarget() {
+        for (int i = 0; i < players.length; i++) {
+            Arrays.fill(players[i].getNumbers(), 0, players[i].getCount(), 0);
+            players[i].setCount(0);
+        }
+        targetNumber = 0;
+    }
+
+    private static void installTargetNumber() {
+        if (targetNumber == 0) {
+            targetNumber = r.nextInt(100) + 1;
+        }
     }
 
     private void enterNumber(Player player) {
-        System.out.println(player.getName() + ",введите число в диапазоне (0, 100]");
-        player.setNumber(scan.nextInt());
+            System.out.println(player.getName() + ",введите число в диапазоне (0, 100]");
+            player.setNumber(scan.nextInt());
     }
 
     private boolean compareNumbers(Player player) {
-        String str = "Данное число больше того, что загадал компьютер. Ход переходит к другому игроку.";
-        String[] string = str.split(" ");
+        String strStart = "Данное число";
+        String strFinish = " того, что загадал компьютер. Ход переходит к другому игроку.";
         if (player.getCurrentNumber() != targetNumber) {
-            string[2] = player.getCurrentNumber() > targetNumber ? "больше" :  "меньше";
-            for (String word : string) {
-                System.out.print(word + " ");
-            }
+            System.out.println(player.getCurrentNumber() > targetNumber ? strStart + " больше" + strFinish
+                    : strStart + " меньше" + strFinish);
             return false;
         }
-        player.setNumberWins(1);
-        System.out.println("Игрок " + player.getName() + " угадал число " + targetNumber + " с " + player.getCount() + " попытки. Это победа под номером " + player.getNumberWins());
+        player.setNumberWins();
+        System.out.println("Игрок " + player.getName() + " угадал число " + targetNumber + " с " + player.getCount() +
+                " попытки.\nЭто победа под номером " + player.getNumberWins() + ".");
         return true;
     }
 
@@ -83,34 +100,28 @@ public class GuessNumber {
         }
     }
 
-    private void showNumbers(Player player) {
-        int[] copyArrayNumbers = player.getNumbers();
+    private void showNumbers() {
+        for (int i = 0; i < players.length; i++) {
+            int[] copyArrayNumbers = players[i].getNumbers();
             for (int number : copyArrayNumbers) {
                 System.out.print(number + " ");
             }
-        System.out.println(" ");
+            System.out.println(" ");
+        }
     }
 
     private String checkWinner() {
-        int max = arrPlayers[0].getNumberWins();
-        for (int i = 0; i < arrPlayers.length - 1; i++) {
-            if (arrPlayers[i + 1].getNumberWins() > max) {
-                return "Победу одержал игрок " + arrPlayers[i + 1].getName() + " !";
-            } else if (max > arrPlayers[2].getNumberWins()) {
-                return "Победу одержал игрок " + arrPlayers[0].getName() + " !";
+        int max = players[0].getNumberWins();
+        for (int i = 0; i < players.length - 1; i++) {
+            if (players[i + 1].getNumberWins() > max) {
+                return "Победу одержал игрок " + players[i + 1].getName() + " !";
+            } else if (max > players[2].getNumberWins()) {
+                return "Победу одержал игрок " + players[0].getName() + " !";
             } else {
-                return "Победила дружба! Каждый игрок угадал число один раз из трех.";
+                return "Победитель не выявлен.";
             }
         }
         return null;
-    }
-
-    private void cleanWinnerNumbers() {
-        for (int i = 0; i < arrPlayers.length - 1; i++) {
-            if (arrPlayers[i].getNumberWins() != 0) {
-                arrPlayers[i].setNumberWins(0);
-            }
-        }
     }
 }
 

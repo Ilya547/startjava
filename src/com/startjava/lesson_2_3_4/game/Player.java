@@ -32,15 +32,18 @@ public class Player {
     public void setNumber(int number) {
         if (number < 101 && number > 0) {
             numbers[count] = number;
-            count++;
         } else {
             System.err.println("Данное число не входит в диапазон (0, 100]. Ход переходит другому игроку.");
-            count++;
         }
+        count++;
     }
 
     public int getCount() {
         return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
     }
 
     public int getNumberWins() {
@@ -48,16 +51,10 @@ public class Player {
     }
 
     public void setNumberWins(int numberW) {
-        if (numberW == 1) {
-            numberWins += numberW;
-        } else if (numberW == 0) {
-            numberWins = numberW;
-        }
-
+        numberWins = numberW;
     }
 
-    public void clearNumbers() {
-        Arrays.fill(numbers, 0, count, 0);
-        count = 0;
+    public void setNumberWins() {
+        numberWins++;
     }
 }
