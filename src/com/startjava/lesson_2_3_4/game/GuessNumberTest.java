@@ -5,18 +5,15 @@ import java.util.Scanner;
 public class GuessNumberTest {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
+        GuessNumber game = new GuessNumber(3);
+        String reply = "yes";
 
-        Player[] players = new Player[3];
-
-        GuessNumber game = new GuessNumber(players);
-
-        String reply;
         do {
-            game.launch();
+            if (reply.equals("yes")) {
+                game.launch(3);
+            }
             System.out.println("\nХотите продолжить игру? [yes/no]:");
-            do {
-                reply = scan.nextLine();
-            } while (!reply.equals("yes") && !reply.equals("no"));
-        } while (reply.equals("yes"));
+            reply = scan.nextLine();
+        } while (!reply.equals("no"));
     }
 }
