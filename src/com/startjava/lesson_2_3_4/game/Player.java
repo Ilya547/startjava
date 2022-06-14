@@ -25,6 +25,10 @@ public class Player {
         return Arrays.copyOf(numbers, count);
     }
 
+    public int[] getNumbersOriginal() {
+        return numbers;
+    }
+
     public int getCurrentNumber() {
         return numbers[count - 1];
     }
