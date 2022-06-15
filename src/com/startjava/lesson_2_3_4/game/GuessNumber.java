@@ -1,6 +1,5 @@
 package com.startjava.lesson_2_3_4.game;
 
-import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -8,7 +7,8 @@ public class GuessNumber {
     private int targetNumber;
     private Scanner scan = new Scanner(System.in);
     private Random r = new Random();
-    private Player[] players;
+
+    private static Player[] players;
 
     public GuessNumber(int index) {
         Player[] players = new Player[index];
@@ -23,12 +23,11 @@ public class GuessNumber {
         clearWinnerNumbers();
         castLots();
         for (int i = 0; i < round; i++) {
-            initGame();
+            targetNumber = r.nextInt(100) + 1;
+            Player.initGame(players);
             System.out.println("У каждого игрока есть " + players[0].getMaxCount() + " попыток, чтобы угадать число.\n"
                     + "Победитель определяется по результатам трех игр.");
             for (int j = 0; j < players[0].getMaxCount(); j++) {
-//                installTargetNumber();
-                System.out.println("targe= " + targetNumber);
                 for (int k = 0; k < players.length; k++) {
                     enterNumber(players[k]);
                     if (compareNumbers(players[k])) {
@@ -58,14 +57,6 @@ public class GuessNumber {
             players[i] = players[rnd];
             players[rnd] = tmp;
         }
-    }
-
-    private void initGame() {
-        for (int i = 0; i < players.length; i++) {
-            Arrays.fill(players[i].getNumbersOriginal(), 0, players[i].getCount(), 0);
-            players[i].setCount(0);
-        }
-        targetNumber = r.nextInt(100) + 1;
     }
 
     private void enterNumber(Player player) {

@@ -25,10 +25,6 @@ public class Player {
         return Arrays.copyOf(numbers, count);
     }
 
-    public int[] getNumbersOriginal() {
-        return numbers;
-    }
-
     public int getCurrentNumber() {
         return numbers[count - 1];
     }
@@ -61,4 +57,12 @@ public class Player {
     public void setNumberWins() {
         numberWins++;
     }
+
+    public static void initGame(Player[] players) {
+        for (int i = 0; i < players.length; i++) {
+            Arrays.fill(players[i].numbers, 0, players[i].getCount(), 0);
+            players[i].setCount(0);
+        }
+    }
 }
+
