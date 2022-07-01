@@ -1,7 +1,5 @@
 package com.startjava.graduation;
 
-import java.util.Arrays;
-
 public class Book {
     private String author;
     private String title;
@@ -26,4 +24,3 @@ public class Book {
     }
 
 }
-
