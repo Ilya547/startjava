@@ -5,15 +5,12 @@ import java.util.Scanner;
 
 public class Bookshelf {
     private Scanner scan = new Scanner(System.in);
-    private static Book[] books;
-    private int booksCount = 5;
+    private Book[] books;
+    private int countBooks = 5;
 
-    private static int maxBooksCount = 9;
 
-    private static int count;
-
-    public Bookshelf(int arrayLength) {
-        books = new Book[arrayLength];
+    public Bookshelf(int length) {
+        books = new Book[length];
         books[0] = new Book("Михаил Булгаков", "Мастер и Маргарита", "1940");
         books[1] = new Book("Ильф & Петров", "Двенадцать стульев", "1928");
         books[2] = new Book("Николай Гоголь", "Мёртвые души", "1842");
@@ -26,35 +23,29 @@ public class Bookshelf {
         books[9] = new Book(" ", "  ", " ");
     }
 
-    public static Book[] getBooks() {
-        return Arrays.copyOf(books, count);
-    }
-
-    public static int getMaxBooksCount() {
-        return maxBooksCount;
-    }
-
-    public int getCount() {
-        return count;
+    public Book[] getBooks() {
+        return Arrays.copyOf(books, books.length);
     }
 
     public void setCount(int count) {
-        this.count = count;
+        this.countBooks = count;
     }
 
     public void deleteBook(int numberDelete) {
         if (numberDelete > 0 && numberDelete <= books.length + 1) {
             System.arraycopy(books, numberDelete, books, numberDelete - 1, books.length - numberDelete);
-            booksCount -= 1;
+            countBooks -= 1;
         } else {
             System.err.println("Ошибка!Необходимо ввести число от 1 до 10.");
         }
     }
 
     public void changeBookPosition(int positionOrigin, int positionDestination) {
-        Book tmp = books[positionOrigin];
-        books[positionOrigin] = books[positionDestination];
-        books[positionDestination] = tmp;
+        int origin = positionOrigin - 1;
+        int destination = positionDestination - 1;
+        Book tmp = books[origin];
+        books[origin] = books[destination];
+        books[destination] = tmp;
     }
 
     public boolean addBook(Book newBook) {
@@ -71,7 +62,7 @@ public class Bookshelf {
                         if (result[numberNewBook - 1] != 0) {
                             books[numberNewBook - 1] = newBook;
                             System.out.println("Книга добавлена.");
-                            booksCount += 1;
+                            countBooks += 1;
                             return true;
                         }
                     }
@@ -87,15 +78,14 @@ public class Bookshelf {
                 return i;
             }
         }
-        String str = "Книга не найдена.";
-        return Integer.parseInt(str);
+        return - 1;
     }
 
-    public int showNumberAllBook() {
-        return booksCount;
+    public int getCountBooks() {
+        return countBooks;
     }
 
-    public int showNumberFreeSpace() {
-        return maxBooksCount - booksCount;
+    public int getCountFreeSpace() {
+        return books.length - countBooks;
     }
 }
