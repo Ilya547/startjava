@@ -1,3 +1,4 @@
+DROP DATABASE lesson_5;
 CREATE DATABASE lesson_5;
 \c lesson_5
 CREATE TABLE jaegers (
