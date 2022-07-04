@@ -27,12 +27,8 @@ public class Bookshelf {
     }
 
     public void deleteBook(int numberDelete) {
-        if (numberDelete > 0 && numberDelete <= books.length) {
             System.arraycopy(books, numberDelete, books, numberDelete - 1, books.length - numberDelete);
-            countBooks --;
-        } else {
-            System.err.println("Ошибка!Необходимо ввести число от 1 до 10.");
-        }
+            countBooks--;
     }
 
     public void changeBookPosition(int positionOrigin, int positionDestination) {
@@ -57,7 +53,7 @@ public class Bookshelf {
                         if (result[numberNewBook - 1] != 0) {
                             books[numberNewBook - 1] = newBook;
                             System.out.println("Книга добавлена.");
-                            countBooks ++;
+                            countBooks++;
                             return true;
                         }
                     }

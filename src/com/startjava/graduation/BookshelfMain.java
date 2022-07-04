@@ -1,15 +1,16 @@
 package com.startjava.graduation;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class BookshelfMain {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         Bookshelf bookshelf = new Bookshelf(10);
-        int chooseAction;
-        System.out.println("Актуальное состояние книжной полки: ");
-        showVisualization(bookshelf);
+        int chooseAction = 0;
         do {
+            System.out.println("Актуальное состояние книжной полки: ");
+            showVisualization(bookshelf);
             System.out.println("""
                     \nВыберите действие с помощью чисел. 
                     Пример: если вы хотите удалить книгу - введите 1 и нажмите Enter.
@@ -22,36 +23,63 @@ public class BookshelfMain {
                     7.Выйти из программы
                     Введите номер команды: 
                     """);
-            chooseAction = scan.nextInt();
+            try {
+                chooseAction = scan.nextInt();
+            } catch (InputMismatchException e) {
+                System.out.println("Ошибка!Введите натурально' число, которое соответствует строчке в меню.");
+            }
             scan.nextLine();
             switch (chooseAction) {
                 case 1 -> {
                     System.out.print("Введите номер книги для удаления: ");
-                    bookshelf.deleteBook(scan.nextInt());
+                    try {
+                        bookshelf.deleteBook(scan.nextInt());
+                    } catch (ArrayIndexOutOfBoundsException e) {
+                        System.out.println("Ошибка!Введите число от 1 до " + bookshelf.getBooks().length
+                                + " включительно.");
+                    } catch (InputMismatchException e) {
+                        System.out.println("Ошибка!Введите натуральное число.");
+                    }
+
                 }
                 case 2 -> {
                     System.out.println("Введите номер книги для перемещения: ");
                     int positionOrigin = scan.nextInt();
                     System.out.println("Введите новое место для книги: ");
                     int positionDestination = scan.nextInt();
-                    bookshelf.changeBookPosition(positionOrigin, positionDestination);
+                    try {
+                        bookshelf.changeBookPosition(positionOrigin, positionDestination);
+                    } catch (ArrayIndexOutOfBoundsException e) {
+                        System.out.println("Ошибка!Введите число от 1 до " + bookshelf.getBooks().length
+                                + " включительно.");
+                    } catch (InputMismatchException e) {
+                        System.out.println("Ошибка!Введите целые числа.");
+                    }
                 }
                 case 3 -> {
                     System.out.println("\nВведите автора, название и год выпуска книги(используйте Enter в качестве" +
                             " разделителя):");
                     Book newBook = new Book(scan.nextLine(), scan.nextLine(), scan.nextLine());
-                    if (!bookshelf.addBook(newBook)) {
-                        System.err.println("Книга не добавлена.");
+                    try {
+                        if (!bookshelf.addBook(newBook)) {
+                            System.out.println("Книга не добавлена.");
+                        }
+                    } catch (ArrayIndexOutOfBoundsException e) {
+                        System.out.println("Ошибка!Введите число от 1 до " + bookshelf.getBooks().length
+                                + " включительно.");
+                    } catch (InputMismatchException e) {
+                        System.out.println("Ошибка!Введите натурально' число.");
                     }
+
                 }
                 case 4 -> {
                     System.out.println("Введите название книги, для ее поиска:");
-                    String title = scan.nextLine();
                     try {
+                        String title = scan.nextLine();
                         int i = bookshelf.findBook(title);
                         System.out.print(bookshelf.getBooks()[i] + "\n");
-                    } catch (NumberFormatException e) {
-                        System.err.println("Книга не найдена");
+                    } catch (ArrayIndexOutOfBoundsException e) {
+                        System.out.println("Книга не найдена.");
                     }
                 }
                 case 5 -> {
@@ -60,9 +88,8 @@ public class BookshelfMain {
                 }
                 case 6 -> System.out.println("Количество свободного места: " + bookshelf.getCountFreeSpace());
                 case 7 -> System.out.println("Работа программы завершена.");
+                default -> System.out.println("Ошибка.Вы ввели некорректное число!");
             }
-            System.out.println("Актуальное состояние книжной полки: ");
-            showVisualization(bookshelf);
         } while (chooseAction != 7);
     }
 
