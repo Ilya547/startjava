@@ -8,7 +8,6 @@ public class Bookshelf {
     private Book[] books;
     private int countBooks = 5;
 
-
     public Bookshelf(int length) {
         books = new Book[length];
         books[0] = new Book("Михаил Булгаков", "Мастер и Маргарита", "1940");
@@ -27,14 +26,10 @@ public class Bookshelf {
         return Arrays.copyOf(books, books.length);
     }
 
-    public void setCount(int count) {
-        this.countBooks = count;
-    }
-
     public void deleteBook(int numberDelete) {
-        if (numberDelete > 0 && numberDelete <= books.length + 1) {
+        if (numberDelete > 0 && numberDelete <= books.length) {
             System.arraycopy(books, numberDelete, books, numberDelete - 1, books.length - numberDelete);
-            countBooks -= 1;
+            countBooks --;
         } else {
             System.err.println("Ошибка!Необходимо ввести число от 1 до 10.");
         }
@@ -49,20 +44,20 @@ public class Bookshelf {
     }
 
     public boolean addBook(Book newBook) {
-        System.out.println("Ниже указаны ячейки, доступные для добавления : ");
+        System.out.println("Ниже указаны ячейки, доступные для добавления: ");
         int[] result = new int[books.length];
         for (int i = 0; i < books.length; i++) {
             if (books[i].getTitle().equals("  ")) {
                 result[i] = i;
                 System.out.printf(i + 1 + ", ");
                 if (i == books.length - 1) {
-                    System.out.println("\nВведите номер ячейки : ");
+                    System.out.println("\nВведите номер ячейки: ");
                     int numberNewBook = scan.nextInt();
                     for (i = 0; i < result.length; i++) {
                         if (result[numberNewBook - 1] != 0) {
                             books[numberNewBook - 1] = newBook;
                             System.out.println("Книга добавлена.");
-                            countBooks += 1;
+                            countBooks ++;
                             return true;
                         }
                     }

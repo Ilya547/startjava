@@ -7,10 +7,12 @@ public class BookshelfMain {
         Scanner scan = new Scanner(System.in);
         Bookshelf bookshelf = new Bookshelf(10);
         int chooseAction;
+        System.out.println("Актуальное состояние книжной полки: ");
+        showVisualization(bookshelf);
         do {
             System.out.println("""
                     \nВыберите действие с помощью чисел. 
-                    Пример : если вы хотите удалить книгу - введите 1 и нажмите Enter.
+                    Пример: если вы хотите удалить книгу - введите 1 и нажмите Enter.
                     1.Удалить книгу
                     2.Переместить книгу
                     3.Добавить книгу
@@ -24,26 +26,26 @@ public class BookshelfMain {
             scan.nextLine();
             switch (chooseAction) {
                 case 1 -> {
-                    System.out.println("Введите номер книги для удаления : ");
+                    System.out.print("Введите номер книги для удаления: ");
                     bookshelf.deleteBook(scan.nextInt());
                 }
                 case 2 -> {
-                    System.out.println("Введите номер книги для перемещения : ");
+                    System.out.println("Введите номер книги для перемещения: ");
                     int positionOrigin = scan.nextInt();
-                    System.out.println("Введите новое место для книги : ");
+                    System.out.println("Введите новое место для книги: ");
                     int positionDestination = scan.nextInt();
                     bookshelf.changeBookPosition(positionOrigin, positionDestination);
                 }
                 case 3 -> {
                     System.out.println("\nВведите автора, название и год выпуска книги(используйте Enter в качестве" +
-                            " разделителя) :");
+                            " разделителя):");
                     Book newBook = new Book(scan.nextLine(), scan.nextLine(), scan.nextLine());
                     if (!bookshelf.addBook(newBook)) {
                         System.err.println("Книга не добавлена.");
                     }
                 }
                 case 4 -> {
-                    System.out.println("Введите название книги, для ее поиска :");
+                    System.out.println("Введите название книги, для ее поиска:");
                     String title = scan.nextLine();
                     try {
                         int i = bookshelf.findBook(title);
@@ -53,10 +55,10 @@ public class BookshelfMain {
                     }
                 }
                 case 5 -> {
-                    System.out.println("Количество книг на полке : " +
+                    System.out.println("Количество книг на полке: " +
                             bookshelf.getCountBooks());
                 }
-                case 6 -> System.out.println("Количество свободного места : " + bookshelf.getCountFreeSpace());
+                case 6 -> System.out.println("Количество свободного места: " + bookshelf.getCountFreeSpace());
                 case 7 -> System.out.println("Работа программы завершена.");
             }
             System.out.println("Актуальное состояние книжной полки: ");
@@ -68,7 +70,6 @@ public class BookshelfMain {
         for (int i = 0; i < bookshelf.getBooks().length; i++) {
             System.out.print("<" + (i + 1) + " ");
             System.out.print(bookshelf.getBooks()[i]);
-            System.out.print(">\n");
         }
     }
 }
