@@ -27,8 +27,8 @@ public class Bookshelf {
     }
 
     public void deleteBook(int numberDelete) {
-            System.arraycopy(books, numberDelete, books, numberDelete - 1, books.length - numberDelete);
-            countBooks--;
+        System.arraycopy(books, numberDelete, books, numberDelete - 1, books.length - numberDelete);
+        countBooks--;
     }
 
     public void changeBookPosition(int positionOrigin, int positionDestination) {
@@ -69,7 +69,7 @@ public class Bookshelf {
                 return i;
             }
         }
-        return - 1;
+        return -1;
     }
 
     public int getCountBooks() {
