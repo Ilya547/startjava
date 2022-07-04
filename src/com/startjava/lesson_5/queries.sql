@@ -1,6 +1,6 @@
 SELECT * FROM jaegers;
 SELECT * FROM jaegers WHERE status = 'Not destroyed';
-SELECT * FROM jaegers WHERE mark = '1' OR '6';
+SELECT * FROM jaegers WHERE mark = '1' IN '6';
 SELECT * FROM jaegers ORDER BY mark DESC;
 SELECT * FROM jaegers WHERE mark = (SELECT MIN(mark) from jaegers);
 SELECT * FROM jaegers WHERE kaijukill = (SELECT MIN(kaijukill) FROM jaegers);
