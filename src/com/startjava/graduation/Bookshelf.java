@@ -27,8 +27,13 @@ public class Bookshelf {
     }
 
     public void deleteBook(int numberDelete) {
-        System.arraycopy(books, numberDelete, books, numberDelete - 1, books.length - numberDelete);
-        countBooks--;
+        if (numberDelete > 0 && numberDelete <= getBooks().length) {
+            System.arraycopy(books, numberDelete, books, numberDelete - 1, books.length - numberDelete);
+            countBooks--;
+            System.out.println("Книга удалена.");
+        } else {
+            System.out.println("Ошибка!Введите число от 1 до " + getBooks().length + " включительно.");
+        }
     }
 
     public void changeBookPosition(int positionOrigin, int positionDestination) {
@@ -49,17 +54,20 @@ public class Bookshelf {
                 if (i == books.length - 1) {
                     System.out.println("\nВведите номер ячейки: ");
                     int numberNewBook = scan.nextInt();
-                    for (i = 0; i < result.length; i++) {
-                        if (result[numberNewBook - 1] != 0) {
-                            books[numberNewBook - 1] = newBook;
-                            System.out.println("Книга добавлена.");
-                            countBooks++;
-                            return true;
+                    if (numberNewBook > 0 && numberNewBook <= getBooks().length) {
+                        for (i = 0; i < result.length; i++) {
+                            if (result[numberNewBook - 1] != 0) {
+                                books[numberNewBook - 1] = newBook;
+                                System.out.println("Книга добавлена.");
+                                countBooks++;
+                                return true;
+                            }
                         }
                     }
                 }
             }
         }
+        System.out.println("Ошибка!Введите число от 1 до " + getBooks().length + " включительно.");
         return false;
     }
 
